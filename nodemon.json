@@ -1,0 +1,7 @@
+{
+  "watch": [
+    "build/**/*.js"
+  ],
+  "ignore": ["./test/**/*.spec.js"],
+  "exec": "babel-node ./build/server.js"
+}
