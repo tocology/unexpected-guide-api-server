@@ -1,0 +1,77 @@
+CREATE TABLE `besoul`.`art` (
+    `artId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `name` VARCHAR(200) NOT NULL COMMENT '작품 이름',
+    `artistId` BIGINT DEFAULT NULL COMMENT '작가 ID',
+    `thumbImageId` BIGINT DEFAULT NULL COMMENT '썸네일 이미지 ID',
+    `description` TEXT(2000) DEFAULT NULL COMMENT '작품 설명',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`artId`)
+) COMMENT = '작품 정보';
+
+CREATE TABLE `besoul`.`artist` (
+    `artistId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `name` VARCHAR(100) NOT NULL COMMENT '작가 이름',
+    `imageId` BIGINT DEFAULT NULL COMMENT '작가 이미지',
+    `birthday` DATETIME DEFAULT NULL COMMENT '탄생일',
+    `deathday` DATETIME DEFAULT NULL COMMENT '사망일',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`artistId`)
+) COMMENT = '작가 정보';
+
+CREATE TABLE `besoul`.`voice` (
+    `voiceId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `url` VARCHAR(2083) NOT NULL COMMENT '음성 URL',
+    `docentId` BIGINT NOT NULL COMMENT '도슨트 ID',
+    `enableStatus` VARCHAR(30) NOT NULL DEFAULT 'ACTIVE' COMMENT '음성 상태(ACTIVE,INACTIVE)',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`voiceId`)
+) COMMENT = '음성 정보';
+
+CREATE TABLE `besoul`.`voice_log` (
+    `voiceLogId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `voiceId` BIGINT NOT NULL COMMENT '음성 ID',
+    `logType` VARCHAR(30) NOT NULL COMMENT 'Log 종류(PLAY_CHECK,STAR_POINT)',
+    `playCheck` INT NOT NULL DEFAULT 0 COMMENT 'play 여부(0,1)',
+    `starPoint` FLOAT NOT NULL DEFAULT 0.0 COMMENT 'star 점수',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`voiceLogId`)
+) COMMENT = '음성 Log';
+
+CREATE TABLE `besoul`.`image` (
+    `imageId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `url` VARCHAR(2083) NOT NULL COMMENT '이미지 url',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`imageId`)
+) COMMENT = '이미지 정보';
+
+CREATE TABLE `besoul`.`art_image_map` (
+    `artImageMapId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `artId` BIGINT NOT NULL COMMENT '작품 ID',
+    `imageId` BIGINT NOT NULL COMMENT '이미지 ID',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`artImageMapId`)
+) COMMENT = '작품과 이미지 간 맵핑 테이블';
+
+CREATE TABLE `besoul`.`docent` (
+    `docentId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `name` VARCHAR(200) NOT NULL COMMENT '도슨트 이름',
+    `imageId` BIGINT DEFAULT NULL COMMENT '도슨트 이미지',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`docentId`)
+) COMMENT = '도슨트 정보';
+
+CREATE TABLE `besoul`.`docent_log` (
+    `docentLogId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `docentId` BIGINT NOT NULL COMMENT '도슨트 ID',
+    `logType` VARCHAR(30) NOT NULL COMMENT 'Log 종류(LIKE_CHECK,STAR_POINT)',
+    `likeCheck` INT NOT NULL DEFAULT 0 COMMENT 'like 여부(0,1)',
+    `starPoint` FLOAT NOT NULL DEFAULT 0.0 COMMENT 'star 점수',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`docentLogId`)
+) COMMENT = '도슨트 Log';

@@ -1,4 +1,3 @@
-import util from 'util';
 import config from './config/env';
 import app from './config/express';
 import { sequelize } from './config/dbConnection';
