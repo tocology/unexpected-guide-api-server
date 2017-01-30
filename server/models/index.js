@@ -1,22 +1,27 @@
+import fs from 'fs';
+import path from 'path';
 import Sequelize from 'sequelize';
-import { sequelize } from '../../config/dbConnection';
+import env from 'config/env';
 
-const Users = sequelize.define('users', {
-    id : { type : Sequelize.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true}
-    , username: { type: Sequelize.STRING }
-    , password: { type: Sequelize.STRING }
-    , email: { type: Sequelize.STRING }
+const sequalize = new Sequelize(env.mysql.database, env.mysql.params.username, env.mysql.params.password, env.mysql.params.options);
+const db = {};
+
+fs.readdirSync(__dirname)
+  .filter(file => {
+    return (file.indexOf('.') !== 0) && (file !== 'index.js')
+  })
+  .forEach(file => {
+    const model = sequalize.import(path.resolve(__dirname, file));
+    db[model.name] = model;
+  });
+
+Object.keys(db).forEach(modelName => {
+  if ('associate' in db[modelName]) {
+    db[modelName].associate(db);
+  }
 });
 
-const Arts = sequelize.define('arts', {
-    id : { type : Sequelize.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true}
-    , name : { type : Sequelize.STRING, allowNull: true, defaultValue: null}
-    , artistName : { type : Sequelize.STRING, allowNull: true, defaultValue: null}
-    , createdDate : { type : Sequelize.DATE, allowNull: true, defaultValue: null}
-    , description : { type : Sequelize.STRING, allowNull: true, defaultValue: null}
-}, { timestamps: false } );
+db.sequelize = sequalize;
+db.Sequelize = Sequelize;
 
-export default {
-    Users,
-    Arts
-};
+export default db;
