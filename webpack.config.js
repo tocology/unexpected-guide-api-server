@@ -15,6 +15,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'server.js'),
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
+    root      : [path.resolve(__dirname, '')],
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
   },
   module: {
@@ -32,6 +33,10 @@ module.exports = {
         loader: 'json'
       }
     ]
+  },
+  node: {
+    __filename: true,
+    __dirname: true
   },
   target: 'node',
   output: {

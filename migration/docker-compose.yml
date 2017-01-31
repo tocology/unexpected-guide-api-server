@@ -10,3 +10,4 @@ mysql:
         - "3305:3306"
     volumes:
         - /var/lib/mysql
+    command: [mysqld, --character-set-server=utf8, --collation-server=utf8_general_ci]
