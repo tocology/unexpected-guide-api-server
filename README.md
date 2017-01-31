@@ -7,3 +7,4 @@ First, you need to install all dependant packages by npm.
 ```
 
 If you want to set any other options for babel, you can do that at `.babelrc`.
+
