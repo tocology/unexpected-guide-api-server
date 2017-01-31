@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import Sequelize from 'sequelize';
-import env from 'config/env';
+import config from 'config/env';
 
-const sequalize = new Sequelize(env.mysql.database, env.mysql.params.username, env.mysql.params.password, env.mysql.params.options);
+const sequalize = new Sequelize(config.mysql.database, config.mysql.username, config.mysql.password, config.mysql.params.options);
 const db = {};
 
 fs.readdirSync(__dirname)

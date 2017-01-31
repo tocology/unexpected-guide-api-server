@@ -7,9 +7,9 @@ export default {
     // todo: set mysql connection port
     mysql: {
         database: 'besoul',
+        username: 'succeednicely',
+        password: 'failnicely',
         params: {
-            username: 'succeednicely',
-            password: 'failnicely',
             options: {
                 dialect: 'mysql',
                 port: 3305,

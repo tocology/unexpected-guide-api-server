@@ -1,4 +1,4 @@
-import env from './config/env';
+import config from './config/env';
 import app from './config/express';
 import models from './server/models';
 
@@ -8,10 +8,10 @@ const debug = require('debug')('api-server:server');
 // src: https://github.com/mochajs/mocha/issues/1912
 if (!module.parent) {
     // listen on port config.port
-    app.listen(env.port, () => {
-        debug(`server started on port ${env.port} (${env.env})`);
+    app.listen(config.port, () => {
+        debug(`server started on port ${config.port} (${config.env})`);
         models.sequelize.authenticate().then(() => {
-            debug(`${env.mysql.DATABASE_URI} was successfully synchronized`);
+            debug(`${config.mysql.DATABASE_URI} was successfully synchronized`);
         });
     });
 }

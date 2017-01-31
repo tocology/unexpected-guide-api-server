@@ -5,12 +5,7 @@ export default function(sequelize, DataTypes) {
     updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
     createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW }
   }, {
-    tableName: 'image',
-    classMethods: {
-      associate: (models) => {
-        Image.hasOne(models.Docent);
-      }
-    }
+    tableName: 'image'
   })
 
   return Image;
