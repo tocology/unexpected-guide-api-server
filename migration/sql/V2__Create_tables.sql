@@ -1,9 +1,10 @@
 CREATE TABLE `besoul`.`art` (
     `artId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `name` VARCHAR(200) NOT NULL COMMENT '작품 이름',
+    `koreanName` VARCHAR(200) DEFAULT NULL COMMENT '작품 한글 이름',
+    `englishName` VARCHAR(200) NOT NULL COMMENT '작품 영문 이름',
     `artistId` BIGINT DEFAULT NULL COMMENT '작가 ID',
     `thumbImageId` BIGINT DEFAULT NULL COMMENT '썸네일 이미지 ID',
-    `description` TEXT(2000) DEFAULT NULL COMMENT '작품 설명',
+    `description` TEXT(4000) DEFAULT NULL COMMENT '작품 설명',
     `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
     `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
     PRIMARY KEY (`artId`)
@@ -11,10 +12,12 @@ CREATE TABLE `besoul`.`art` (
 
 CREATE TABLE `besoul`.`artist` (
     `artistId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `name` VARCHAR(100) NOT NULL COMMENT '작가 이름',
+    `koreanName` VARCHAR(100) DEFAULT NULL COMMENT '작가 한글 이름',
+    `englishName` VARCHAR(100) NOT NULL COMMENT '작가 영문 이름',
     `imageId` BIGINT DEFAULT NULL COMMENT '작가 이미지',
-    `birthday` DATETIME DEFAULT NULL COMMENT '탄생일',
-    `deathday` DATETIME DEFAULT NULL COMMENT '사망일',
+    `countryId` BIGINT NOT NULL COMMENT '국가 ID',
+    `birthday` VARCHAR(20) DEFAULT NULL COMMENT '탄생일',
+    `deathday` VARCHAR(20) DEFAULT NULL COMMENT '사망일',
     `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
     `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
     PRIMARY KEY (`artistId`)
@@ -75,3 +78,22 @@ CREATE TABLE `besoul`.`docent_log` (
     `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
     PRIMARY KEY (`docentLogId`)
 ) COMMENT = '도슨트 Log';
+
+CREATE TABLE `besoul`.`country` (
+    `countryId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `koreanName` VARCHAR(50) DEFAULT NULL COMMENT '국가 한글 이름',
+    `englishName` VARCHAR(50) NOT NULL COMMENT '국가 영문 이름',
+    `countryCode` VARCHAR(5) NOT NULL COMMENT '국가 코드(IT,FR 등)',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`countryId`)
+) COMMENT = '국가 정보';
+
+CREATE TABLE `besoul`.`copyright` (
+    `copyrightId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `countryId` BIGINT NOT NULL COMMENT '국가 ID',
+    `period` INT NOT NULL COMMENT '저작권 유효기간',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`copyrightId`)
+) COMMENT = '저작권 정보';

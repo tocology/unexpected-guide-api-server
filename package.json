@@ -11,7 +11,8 @@
     "watch:build": "webpack --watch",
     "watch:server": "sleep 5; ./node_modules/.bin/cross-env NODE_ENV=development ./node_modules/.bin/nodemon",
     "start": "./node_modules/.bin/npm-run-all --parallel watch:build watch:server",
-    "test": "./node_modules/.bin/cross-env NODE_ENV=test mocha test/**/*.js --compilers js:babel-core/babel-register"
+    "test": "./node_modules/.bin/cross-env NODE_ENV=test mocha test/**/*.js --compilers js:babel-core/babel-register",
+    "flyway": "flyway clean baseline migrate -configFile=migration/flyway-local.conf"
   },
   "repository": {
     "type": "git",
