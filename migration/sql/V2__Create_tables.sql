@@ -57,7 +57,8 @@ CREATE TABLE `besoul`.`art_image_map` (
     `imageId` BIGINT NOT NULL COMMENT '이미지 ID',
     `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
     `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
-    PRIMARY KEY (`artImageMapId`)
+    PRIMARY KEY (`artImageMapId`),
+    UNIQUE KEY (`artId`, `imageId`)
 ) COMMENT = '작품과 이미지 간 맵핑 테이블';
 
 CREATE TABLE `besoul`.`docent` (

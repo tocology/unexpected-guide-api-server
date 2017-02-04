@@ -1,16 +1,17 @@
 import models from '../models';
 
-function listDocent(req, res, next) {
+function list(req, res, next) {
   models.Docent.findAll({
+    where: {
+      // todo: voice mapping
+    },
     include: [
-      // { all: true }
-      // { model: models.Image }
-      models.Image
+      { model: models.Image, as: 'ProfileImage' }
     ]
   }).then(docents => res.json(docents))
     .catch(e => next(e))
 }
 
 export default {
-  listDocent
+  list
 };

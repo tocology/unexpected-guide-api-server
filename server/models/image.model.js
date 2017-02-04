@@ -6,7 +6,7 @@ export default function(sequelize, DataTypes) {
     createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW }
   }, {
     tableName: 'image'
-  })
+  });
 
   return Image;
 }
