@@ -5,12 +5,9 @@ function list(req, res, next) {
 
   models.Art.findAll({
     where: {
-      $or: [
-        { koreanName: { $like: `%${keyword}%` } },
-        { englishName: { $like: `%${keyword}%` } },
-        { '$Artist.koreanName$': { $like: `%${keyword}%` } },
-        { '$Artist.englishName$': { $like: `%${keyword}%`} }
-      ]
+      $or: ['koreanName', 'englishName', '$Artist.koreanName$', '$Artist.englishName$'].map(column => {
+        return { [column]: { $like: `%${keyword}%` } }
+      })
     },
     include: [
       { model: models.Artist, as: 'Artist' },
