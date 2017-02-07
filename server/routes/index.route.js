@@ -1,7 +1,7 @@
 import express from 'express';
 import authRoutes from './auth.route';
-import usersRoutes from './users.route';
-import artsRoutes from './arts.route';
+import userRoutes from './user.route';
+import artRoutes from './art.route';
 import docentRoutes from './docent.route';
 
 const router = express.Router();
@@ -12,8 +12,8 @@ router.get('/health-check', (req, res) =>
 );
 
 router.use('/auth', authRoutes);
-router.use('/users', usersRoutes);
-router.use('/arts', artsRoutes);
-router.use('/docents', docentRoutes);
+router.use('/user', userRoutes);
+router.use('/art', artRoutes);
+router.use('/docent', docentRoutes);
 
 export default router;
