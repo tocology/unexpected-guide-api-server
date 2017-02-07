@@ -14,6 +14,6 @@ router.get('/health-check', (req, res) =>
 router.use('/auth', authRoutes);
 router.use('/users', usersRoutes);
 router.use('/arts', artsRoutes);
-router.use('/docent', docentRoutes);
+router.use('/docents', docentRoutes);
 
 export default router;
