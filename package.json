@@ -1,7 +1,7 @@
 {
-  "name": "docent_api_server",
+  "name": "api_server",
   "version": "1.0.0",
-  "description": "API Server for Docent App",
+  "description": "API Server for '뜻밖의, 가이드' App",
   "main": "index.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint config server test",
@@ -16,13 +16,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://tocology@bitbucket.org/tocology/docent-api-server.git"
+    "url": "git@bitbucket.org:failnicely/api_server.git"
   },
   "keywords": [
     "docent"
   ],
   "author": "tocology",
-  "homepage": "https://bitbucket.org/tocology/docent-api-server#readme",
+  "homepage": "https://bitbucket.org/failnicely/api_server#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
@@ -43,7 +43,7 @@
     "morgan": "^1.7.0",
     "mysql": "^2.13.0",
     "mysql2": "^1.1.2",
-    "sequelize": "^3.29.0",
+    "sequelize": "^3.30.2",
     "sequelize-cli": "^2.5.1",
     "winston": "^2.3.0"
   },

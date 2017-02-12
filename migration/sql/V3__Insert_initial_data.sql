@@ -18,6 +18,10 @@ INSERT INTO artist(artistId, koreanName, englishName, imageId, countryId, birthd
 (2, '라파엘로 산치오 다 우르비노', 'Raffaello Sanzio da Urbino', 101, 1, '1483-04-06', '1520-04-06'),
 (3, '레오나르도 디 세르 피에로 다 빈치', 'Leonardo di ser Piero da Vinci', 102, 1, '1452-04-15', '1519-05-02');
 
+INSERT INTO voice(voiceId, url, artId, docentId, enableStatus) VALUES
+(1, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_01.mp3', 1, 1, 'ACTIVE'),
+(2, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_02.mp3', 1, 2, 'ACTIVE');
+
 INSERT INTO country(countryId, koreanName, englishName, countryCode) VALUES
 (1, '이탈리아', 'Italy', 'IT');
 
@@ -26,11 +30,11 @@ INSERT INTO image(imageId, url) VALUES
 (2, 'test2'),
 (3, 'test3'),
 (4, 'test4'),
-(10, 'https://s3.ap-northeast-2.amazonaws.com/besoul/art_image/vatican_image_1.jpg'),
-(11, 'https://s3.ap-northeast-2.amazonaws.com/besoul/art_image/vatican_image_2.jpg'),
-(12, 'https://s3.ap-northeast-2.amazonaws.com/besoul/art_image/vatican_image_3.jpg'),
-(100, 'https://s3.ap-northeast-2.amazonaws.com/besoul/artist_image/giotto_di_bondone.jpg'),
-(101, 'https://s3.ap-northeast-2.amazonaws.com/besoul/artist_image/selfportrait_of_Raffaelo.jpg'),
-(102, 'https://s3.ap-northeast-2.amazonaws.com/besoul/artist_image/leonardo_da_vinci.jpg'),
-(1000, 'https://s3.ap-northeast-2.amazonaws.com/besoul/art_image/vatican_image_4.jpg'),
-(1001, 'https://s3.ap-northeast-2.amazonaws.com/besoul/art_image/vatican_image_5.jpg');
+(10, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/art_image/vatican_image_1.jpg'),
+(11, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/art_image/vatican_image_2.jpg'),
+(12, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/art_image/vatican_image_3.jpg'),
+(100, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/artist_image/giotto_di_bondone.jpg'),
+(101, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/artist_image/selfportrait_of_Raffaelo.jpg'),
+(102, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/artist_image/leonardo_da_vinci.jpg'),
+(1000, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/art_image/vatican_image_4.jpg'),
+(1001, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/art_image/vatican_image_5.jpg');
