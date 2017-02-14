@@ -6,7 +6,7 @@ export default {
     // for MySQL setup
     // todo: set mysql connection port
     mysql: {
-        database: 'besoul',
+        database: 'unexpectedguide',
         username: 'succeednicely',
         password: 'failnicely',
         params: {

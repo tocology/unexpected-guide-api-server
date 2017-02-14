@@ -17,6 +17,14 @@ export default function(sequelize, DataTypes) {
             allowNull: true
           }
         });
+        Docent.hasMany(models.Voice, {
+          as: 'VoiceList',
+          onUpdate: 'CASCADE',
+          foreignKey: {
+            name: 'docentId',
+            allowNull: false
+          }
+        });
       }
     }
   })

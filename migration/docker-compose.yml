@@ -1,11 +1,11 @@
 mysql:
-    container_name: mysql_besoul
+    container_name: mysql_unexpectedguide
     image: mysql:latest
     environment:
         - MYSQL_ROOT_PASSWORD=failnicely
-        - MYSQL_USER=besoul
+        - MYSQL_USER=guide
         - MYSQL_PASSWORD=failnicely
-        - MYSQL_DATABASE=besoul
+        - MYSQL_DATABASE=unexpectedguide
     ports:
         - "3305:3306"
     volumes:
