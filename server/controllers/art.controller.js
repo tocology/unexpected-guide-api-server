@@ -7,12 +7,12 @@ function list(req, res, next) {
 
   models.Art.findAll({
     include: [
-      { model: models.Artist, as: 'Artist' },
-      { model: models.Image, as: 'ThumbImage' },
-      { model: models.Image, as: 'Images' }
+      { model: models.Artist, as: 'artist' },
+      { model: models.Image, as: 'thumbImage' },
+      { model: models.Image, as: 'images', through: { attributes: [] } }
     ],
     where: {
-      $or: ['koreanName', 'englishName', '$Artist.koreanName$', '$Artist.englishName$']
+      $or: ['koreanName', 'englishName', '$artist.koreanName$', '$artist.englishName$']
         .map(column => ({ [column]: { $like: `%${keyword}%` } }))
     },
     offset: (page - 1) * defaultPageLimit,

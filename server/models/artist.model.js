@@ -14,6 +14,7 @@ export default function(sequelize, DataTypes) {
     classMethods: {
       associate: (models) => {
         Artist.belongsTo(models.Image, {
+          as: 'image',
           onUpdate: 'CASCADE',
           foreignKey: {
             name: 'imageId',
@@ -21,6 +22,7 @@ export default function(sequelize, DataTypes) {
           }
         });
         Artist.belongsTo(models.Country, {
+          as: 'country',
           onUpdate: 'CASCADE',
           foreignKey: {
             name: 'countryId',

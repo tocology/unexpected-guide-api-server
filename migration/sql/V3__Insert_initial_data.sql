@@ -1,8 +1,8 @@
 INSERT INTO docent(docentId, name, imageId) VALUES
 (1, '김윤희', 1),
-(2, '이혜림', 2),
-(3, '진형탁', 3),
-(4, '조형재', 4);
+(2, '진형탁', 2),
+(3, '조형재', 3),
+(4, '황준호', 4);
 
 INSERT INTO art(artId, koreanName, englishName, artistId, thumbImageId, description) VALUES
 (1, '스테파네스키 세폭 제단화', 'The Stefaneschi Triptych', 1, 10, '추기경 스테파네스키의 주문으로 세 폭 제단화를 제작한다. 이 제단화는 처음에 바티칸의 옛 성 베드로 성당의 제단화로 사용되다가 현재는 바티칸 박물관 내 회화관에 소장되어 있다. 제단화 앞면 중앙 패널에는 옥좌에 앉은 예수님이, 양쪽 패널에는 각각 성 베드로와 성 바오로의 순교 장면이 묘사되어 있다.'),
@@ -18,18 +18,26 @@ INSERT INTO artist(artistId, koreanName, englishName, imageId, countryId, birthd
 (2, '라파엘로 산치오 다 우르비노', 'Raffaello Sanzio da Urbino', 101, 1, '1483-04-06', '1520-04-06'),
 (3, '레오나르도 디 세르 피에로 다 빈치', 'Leonardo di ser Piero da Vinci', 102, 1, '1452-04-15', '1519-05-02');
 
-INSERT INTO voice(voiceId, url, artId, docentId, enableStatus) VALUES
-(1, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_01.mp3', 1, 1, 'ACTIVE'),
-(2, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_02.mp3', 1, 2, 'ACTIVE');
+INSERT INTO voice(voiceId, url, artId, docentId, avgStarPoint, totLikeCount, description, enableStatus) VALUES
+(1, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_01.mp3', 1, 1, 4.8, 131,  '역사적 설명에 기반한 작품으로 떠나는 여행', 'ACTIVE'),
+(2, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_01.mp3', 1, 1, 4.6, 192, '숨겨두었던 스토리를 들을 수 있는 기회', 'ACTIVE'),
+(3, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_01.mp3', 1, 2, 4.2, 204, '안녕하세요. 도슨트 조형재입니다. 지금 바로 시작합니다.', 'ACTIVE'),
+(4, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_01.mp3', 1, 2, 4.9, 41, '도슨트 황준호입니다. 과거로 떠나는 여행, 제단화의 숨겨진 비밀을 알려드립니다.', 'ACTIVE'),
+(5, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_02.mp3', 1, 3, 4.7, 502, '스테파네스키는 어떤 내용을 숨기고 있을까요? 답을 알려드립니다.', 'ACTIVE'),
+(6, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_02.mp3', 1, 3, 4.1, 255, '20년동안 이 이야기를 다뤄왔습니다. 함께 떠나세요.', 'ACTIVE'),
+(7, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_02.mp3', 1, 4, 5.0, 1, '도슨트 황준호입니다.', 'ACTIVE'),
+(8, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_02.mp3', 1, 4, 0.0, 0, '', 'ACTIVE'),
+(9, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_02.mp3', 1, 1, 4.5, 24, null, 'ACTIVE'),
+(10, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/voice/voice_02.mp3', 1, 1, 5.0, 2, '', 'ACTIVE');
 
 INSERT INTO country(countryId, koreanName, englishName, countryCode) VALUES
 (1, '이탈리아', 'Italy', 'IT');
 
 INSERT INTO image(imageId, url) VALUES
-(1, 'test1'),
-(2, 'test2'),
-(3, 'test3'),
-(4, 'test4'),
+(1, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/docent_image/joy.png'),
+(2, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/docent_image/tak.png'),
+(3, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/docent_image/curl.png'),
+(4, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/docent_image/camry.png'),
 (10, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/art_image/vatican_image_1.jpg'),
 (11, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/art_image/vatican_image_2.jpg'),
 (12, 'https://s3.ap-northeast-2.amazonaws.com/unexpectedguide/art_image/vatican_image_3.jpg'),
