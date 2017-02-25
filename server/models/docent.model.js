@@ -10,7 +10,7 @@ export default function(sequelize, DataTypes) {
     classMethods: {
       associate: (models) => {
         Docent.belongsTo(models.Image, {
-          as: 'ProfileImage',
+          as: 'profileImage',
           onUpdate: 'CASCADE',
           foreignKey: {
             name: 'imageId',
@@ -18,7 +18,7 @@ export default function(sequelize, DataTypes) {
           }
         });
         Docent.hasMany(models.Voice, {
-          as: 'VoiceList',
+          as: 'voiceList',
           onUpdate: 'CASCADE',
           foreignKey: {
             name: 'docentId',

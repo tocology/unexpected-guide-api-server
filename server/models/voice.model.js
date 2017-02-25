@@ -4,6 +4,9 @@ export default function (sequelize, DataTypes) {
     url: { type: DataTypes.STRING(2083), allowNull: false },
     artId: { type: DataTypes.BIGINT, allowNull: false },
     docentId: { type: DataTypes.BIGINT, allowNull: false },
+    avgStarPoint: { type: DataTypes.DOUBLE, allowNull: false },
+    totLikeCount: { type: DataTypes.BIGINT, allowNull: false },
+    description: { type: DataTypes.TEXT, allowNull: true },
     enableStatus: { type: DataTypes.ENUM('ACTIVE', 'INACTIVE'), allowNull: false },
     updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
     createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW }
@@ -12,7 +15,7 @@ export default function (sequelize, DataTypes) {
     classMethods: {
       associate: (models) => {
         Voice.belongsTo(models.Art, {
-          as: 'Art',
+          as: 'art',
           onUpdate: 'CASCADE',
           foreignKey: {
             name: 'artId',
@@ -20,7 +23,7 @@ export default function (sequelize, DataTypes) {
           }
         });
         Voice.belongsTo(models.Docent, {
-          as: 'Docent',
+          as: 'docent',
           onUpdate: 'CASCADE',
           foreignKey: {
             name: 'docentId',

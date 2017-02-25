@@ -13,7 +13,7 @@ export default function (sequelize, DataTypes) {
     classMethods: {
       associate: (models) => {
         Art.belongsTo(models.Artist, {
-          as: 'Artist',
+          as: 'artist',
           onUpdate: 'CASCADE',
           foreignKey: {
             name: 'artistId',
@@ -21,7 +21,7 @@ export default function (sequelize, DataTypes) {
           }
         });
         Art.belongsTo(models.Image, {
-          as: 'ThumbImage',
+          as: 'thumbImage',
           onUpdate: 'CASCADE',
           foreignKey: {
             name: 'thumbImageId',
@@ -29,7 +29,7 @@ export default function (sequelize, DataTypes) {
           }
         });
         Art.belongsToMany(models.Image, {
-          as: 'Images',
+          as: 'images',
           through: models.ArtImageMap,
           foreignKey: 'artId',
           otherKey: 'imageId'
