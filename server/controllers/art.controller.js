@@ -2,8 +2,8 @@ import models from '../models';
 
 export const defaultPageLimit = 20;
 
-function list(req, res, next) {
-  const { keyword, page } = req.query
+function list (req, res, next) {
+  const { keyword, page } = req.query;
 
   models.Art.findAll({
     include: [

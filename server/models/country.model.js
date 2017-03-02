@@ -1,4 +1,4 @@
-export default function(sequelize, DataTypes) {
+export default function (sequelize, DataTypes) {
   const Country = sequelize.define('Country', {
     countryId: { type: DataTypes.BIGINT, allowNull: false, autoIncrement: true, primaryKey: true },
     koreanName: { type: DataTypes.STRING(50), allowNull: true },

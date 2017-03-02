@@ -8,6 +8,7 @@
     "lint:fix": "npm run lint --fix",
     "build": "npm run lint && webpack --node",
     "serve": "./node_modules/.bin/cross-env NODE_ENV=production ./node_modules/.bin/forever start -l forever.log -a build/server.js",
+    "serve:dev": "./node_modules/.bin/cross-env NODE_ENV=development ./node_modules/.bin/forever start -l forever.log -a build/server.js",
     "watch:build": "webpack --watch",
     "watch:server": "sleep 5; ./node_modules/.bin/cross-env NODE_ENV=development ./node_modules/.bin/nodemon",
     "start": "./node_modules/.bin/npm-run-all --parallel watch:build watch:server",

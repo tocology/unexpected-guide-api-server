@@ -1,4 +1,4 @@
-export default function(sequelize, DataTypes) {
+export default function (sequelize, DataTypes) {
   const Artist = sequelize.define('Artist', {
     artistId: { type: DataTypes.BIGINT, allowNull: false, autoIncrement: true, primaryKey: true },
     imageId: { type: DataTypes.BIGINT, allowNull: true },

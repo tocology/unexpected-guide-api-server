@@ -2,7 +2,7 @@ import models from '../models';
 
 export const defaultPageLimit = 20;
 
-function listByArtId(req, res, next) {
+function listByArtId (req, res, next) {
   const { artId } = req.params;
   const { page } = req.query;
 
@@ -26,4 +26,4 @@ function listByArtId(req, res, next) {
 
 export default {
   listByArtId
-}
+};

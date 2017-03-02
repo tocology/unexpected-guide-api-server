@@ -1,5 +1,5 @@
 export default {
-    env: 'development',
+    env: 'local',
     // MONGOOSE_DEBUG: true,
     jwtSecret: 'besoul-api-development',
     port: 3000,
@@ -12,7 +12,7 @@ export default {
         params: {
             options: {
                 dialect: 'mysql',
-                port: 3306,
+                port: 3305,
 
                 pool: {
                     max: 100,

@@ -1,4 +1,4 @@
-export default function(sequelize, DataTypes) {
+export default function (sequelize, DataTypes) {
   const Docent = sequelize.define('Docent', {
     docentId: { type: DataTypes.BIGINT, allowNull: false, autoIncrement: true, primaryKey: true },
     name: { type: DataTypes.STRING(200), allowNull: false },
@@ -27,7 +27,7 @@ export default function(sequelize, DataTypes) {
         });
       }
     }
-  })
+  });
 
   return Docent;
 }

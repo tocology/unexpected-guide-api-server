@@ -16,7 +16,7 @@ const user = {
  * @param next
  * @returns {*}
  */
-function login(req, res, next) {
+function login (req, res, next) {
     // Ideally you'll fetch this from the db
     // Idea here was to show how jwt works with simplicity
     if (req.body.username === user.username && req.body.password === user.password) {
@@ -39,7 +39,7 @@ function login(req, res, next) {
  * @param res
  * @returns {*}
  */
-function getRandomNumber(req, res) {
+function getRandomNumber (req, res) {
     // req.user is assigned by jwt middleware if valid token is provided
     return res.json({
         user: req.user,
