@@ -1,6 +1,6 @@
-import config from './config/env';
-import app from './config/express';
-import models from './server/models';
+import config from '../config/env';
+import app from '../config/express';
+import models from './models';
 
 const debug = require('debug')('api-server:server');
 

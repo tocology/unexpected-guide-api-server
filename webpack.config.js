@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const fs = require('fs');
+const glob = require('glob');
 
 var nodeModules = {};
 fs.readdirSync('node_modules')
@@ -12,7 +13,8 @@ fs.readdirSync('node_modules')
   });
 
 module.exports = {
-  entry: path.resolve(__dirname, 'server.js'),
+  // entry: [ path.resolve(__dirname, 'server.js'), models ],
+  entry: glob.sync(path.resolve(__dirname, 'src/**/*.js')),
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
     root      : [path.resolve(__dirname, '')],
@@ -44,8 +46,5 @@ module.exports = {
     filename: 'server.js',
     libraryTarget: 'commonjs'
   },
-  // externals: [
-  //   /^(?!\.|\/).+/i
-  // ]
   externals : nodeModules
 }
