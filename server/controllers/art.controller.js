@@ -22,7 +22,7 @@ function list (req, res, next) {
     .catch(e => next(e));
 }
 
-function get(req, res, next) {
+function get (req, res, next) {
   const { artId } = req.params;
 
   models.Art.findOne({
