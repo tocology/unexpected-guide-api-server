@@ -22,6 +22,23 @@ function list(req, res, next) {
     .catch(e => next(e));
 }
 
+function get(req, res, next) {
+  const { artId } = req.params;
+
+  models.Art.findOne({
+    include: [
+      { model: models.Artist, as: 'artist' },
+      { model: models.Image, as: 'thumbImage' },
+      { model: models.Image, as: 'images', through: { attributes: [] } }
+    ],
+    where: {
+      'artId': artId
+    },
+    subQuery: false
+  }).then(art => res.json(art))
+    .catch(e => next(e));
+}
+
 export default {
-  list
+  list, get
 };
