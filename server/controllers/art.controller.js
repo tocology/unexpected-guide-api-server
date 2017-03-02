@@ -34,7 +34,6 @@ function get(req, res, next) {
     where: {
       'artId': artId
     },
-    limit: 1,
     subQuery: false
   }).then(art => res.json(art))
     .catch(e => next(e));
