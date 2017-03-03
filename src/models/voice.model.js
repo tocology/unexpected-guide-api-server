@@ -1,4 +1,4 @@
-export default function (sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   const Voice = sequelize.define('Voice', {
     voiceId: { type: DataTypes.BIGINT, allowNull: false, autoIncrement: true, primaryKey: true },
     url: { type: DataTypes.STRING(2083), allowNull: false },

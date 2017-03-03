@@ -1,4 +1,4 @@
-export default function (sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   const ArtImageMap = sequelize.define('ArtImageMap', {
     artImageMapId: { type: DataTypes.BIGINT, allowNull: false, autoIncrement: true, primaryKey: true },
     artId: { type: DataTypes.BIGINT, allowNull: false, unique: 'artImageMapIndex' },
