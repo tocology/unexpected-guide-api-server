@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
     createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW }
   }, {
-    tableName: 'artist',
+    tableName: 'artists',
     classMethods: {
       associate: (models) => {
         Artist.belongsTo(models.Image, {
