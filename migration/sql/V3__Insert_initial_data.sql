@@ -1,9 +1,10 @@
-INSERT INTO users(userId, name, imageId) VALUES
-(1, '김윤희', 1),
-(2, '진형탁', 2),
-(3, '조형재', 3),
-(4, '황준호', 4),
-(5, '안소연', null);
+INSERT INTO users(userId, uid, userName, email, imageId) VALUES
+(1, '김윤희', 'test', 'test@test.com', 1),
+(2, '진형탁', 'test', 'test@test.com', 2),
+(3, '조형재', 'BNLBXG35lBW8q71RHkV2FG4Fuk32', 'jhj0108go@naver.com' 3),
+(4, '황준호', 'test', 'test@test.com', 4),
+(5, '안소연', 'test', 'test@test.com', null),
+(4, '조형재', 'kPZ6XQnbd3POcfNxqXCgOZePrsu2', 'jhj12010@gmail.com', 3);
 
 INSERT INTO arts(artId, koreanName, englishName, artistId, thumbImageId, description) VALUES
 (1, '스테파네스키 세폭 제단화', 'The Stefaneschi Triptych', 1, 10, '추기경 스테파네스키의 주문으로 세 폭 제단화를 제작한다. 이 제단화는 처음에 바티칸의 옛 성 베드로 성당의 제단화로 사용되다가 현재는 바티칸 박물관 내 회화관에 소장되어 있다. 제단화 앞면 중앙 패널에는 옥좌에 앉은 예수님이, 양쪽 패널에는 각각 성 베드로와 성 바오로의 순교 장면이 묘사되어 있다.'),

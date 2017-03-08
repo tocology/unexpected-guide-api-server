@@ -56,8 +56,8 @@ CREATE TABLE `unexpectedguide`.`images` (
     PRIMARY KEY (`imageId`)
 ) COMMENT = '이미지 정보';
 
-CREATE TABLE `unexpectedguide`.`art_images_map` (
-    `artImageMapId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+CREATE TABLE `unexpectedguide`.`art_images` (
+    `artImageId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `artId` BIGINT NOT NULL COMMENT '작품 ID',
     `imageId` BIGINT NOT NULL COMMENT '이미지 ID',
     `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
@@ -68,7 +68,9 @@ CREATE TABLE `unexpectedguide`.`art_images_map` (
 
 CREATE TABLE `unexpectedguide`.`users` (
     `userId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `name` VARCHAR(200) NOT NULL COMMENT '사용자 이름',
+    `uid` VARCHAR(200) NOT NULL COMMENT '사용자 uid',
+    `userName` VARCHAR(200) NOT NULL COMMENT '사용자 이름',
+    `email` VARCHAR(200) NOT NULL COMMENT '사용자 email',
     `imageId` BIGINT DEFAULT NULL COMMENT '사용자 이미지',
     `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
     `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
