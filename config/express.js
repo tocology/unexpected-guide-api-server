@@ -16,7 +16,7 @@ import APIError from '../src/helpers/APIError';
 
 const app = express();
 
-if (config.env === 'development') {
+if (config.env === 'local' || config.env === 'development') {
   app.use(logger('dev'));
 }
 
@@ -35,7 +35,7 @@ app.use(helmet());
 app.use(cors());
 
 // enable detailed API logging in dev env
-if (config.env === 'development') {
+if (config.env === 'local' || config.env === 'development') {
   expressWinston.requestWhitelist.push('body');
   expressWinston.responseWhitelist.push('body');
   app.use(expressWinston.logger({

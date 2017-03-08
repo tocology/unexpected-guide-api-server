@@ -4,6 +4,7 @@ module.exports = function (sequelize, DataTypes) {
     url: { type: DataTypes.STRING(2083), allowNull: false },
     artId: { type: DataTypes.BIGINT, allowNull: false },
     docentId: { type: DataTypes.BIGINT, allowNull: false },
+    price: { type: DataTypes.BIGINT, allowNull: false },
     avgStarPoint: { type: DataTypes.DOUBLE, allowNull: false },
     totLikeCount: { type: DataTypes.BIGINT, allowNull: false },
     description: { type: DataTypes.TEXT, allowNull: true },
@@ -11,7 +12,7 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
     createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW }
   }, {
-    tableName: 'voice',
+    tableName: 'voices',
     classMethods: {
       associate: (models) => {
         Voice.belongsTo(models.Art, {
@@ -22,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
           }
         });
-        Voice.belongsTo(models.Docent, {
+        Voice.belongsTo(models.User, {
           as: 'docent',
           onUpdate: 'CASCADE',
           foreignKey: {

@@ -1,15 +1,17 @@
 module.exports = function (sequelize, DataTypes) {
-  const Docent = sequelize.define('Docent', {
-    docentId: { type: DataTypes.BIGINT, allowNull: false, autoIncrement: true, primaryKey: true },
+  const User = sequelize.define('User', {
+    userId: { type: DataTypes.BIGINT, allowNull: false, autoIncrement: true, primaryKey: true },
+    uid: { type: DataTypes.STRING(200), allowNull: false },
     name: { type: DataTypes.STRING(200), allowNull: false },
+    email: { type: DataTypes.STRING(200), allowNull: false },
     imageId: { type: DataTypes.BIGINT, allowNull: true },
     updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
     createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW }
   }, {
-    tableName: 'docent',
+    tableName: 'users',
     classMethods: {
       associate: (models) => {
-        Docent.belongsTo(models.Image, {
+        User.belongsTo(models.Image, {
           as: 'profileImage',
           onUpdate: 'CASCADE',
           foreignKey: {
@@ -17,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
           }
         });
-        Docent.hasMany(models.Voice, {
+        User.hasMany(models.Voice, {
           as: 'voiceList',
           onUpdate: 'CASCADE',
           foreignKey: {
@@ -25,9 +27,17 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
           }
         });
+        User.hasMany(models.VoicePurchase, {
+          as: 'purchaseList',
+          onUpdate: 'CASCADE',
+          foreignKey: {
+            name: 'userId',
+            allowNull: false
+          }
+        });
       }
     }
   });
 
-  return Docent;
+  return User;
 }

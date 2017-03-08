@@ -13,9 +13,9 @@ router.get('/health-check', (req, res) =>
 );
 
 router.use('/auth', authRoutes);
-router.use('/user', userRoutes);
-router.use('/art', artRoutes);
-router.use('/docent', docentRoutes);
-router.use('/voice', voiceRoutes);
+router.use('/users', userRoutes);
+router.use('/arts', artRoutes);
+router.use('/docents', docentRoutes);
+router.use('/voices', voiceRoutes);
 
 export default router;

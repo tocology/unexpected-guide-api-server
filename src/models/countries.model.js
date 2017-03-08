@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
     createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW }
   }, {
-    tableName: 'country'
+    tableName: 'countries'
   });
 
   return Country;
