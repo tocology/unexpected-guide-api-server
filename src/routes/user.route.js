@@ -18,4 +18,7 @@ const router = express.Router(); // eslint-disable-line new-cap
 router.route('/:userId')
   .get(userCtrl.get)
 
+// router.route('/uid/:uid')
+//   .get(userCtrl.getByUid)
+
 export default router;
