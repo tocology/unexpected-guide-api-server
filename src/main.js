@@ -1,6 +1,7 @@
 import config from '../config/env';
 import app from '../config/express';
 import models from './models';
+import Firebase from './helpers/Firebase';
 
 const debug = require('debug')('api-server:server');
 
@@ -13,6 +14,7 @@ if (!module.parent) {
         models.sequelize.authenticate().then(() => {
             debug(`${config.mysql.DATABASE_URI} was successfully synchronized`);
         });
+        Firebase.initialization();
     });
 }
 

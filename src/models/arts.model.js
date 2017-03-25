@@ -30,7 +30,7 @@ module.exports = function (sequelize, DataTypes) {
         });
         Art.belongsToMany(models.Image, {
           as: 'images',
-          through: models.ArtImageMap,
+          through: models.ArtImage,
           foreignKey: 'artId',
           otherKey: 'imageId'
         });

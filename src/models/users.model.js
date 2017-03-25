@@ -2,7 +2,7 @@ module.exports = function (sequelize, DataTypes) {
   const User = sequelize.define('User', {
     userId: { type: DataTypes.BIGINT, allowNull: false, autoIncrement: true, primaryKey: true },
     uid: { type: DataTypes.STRING(200), allowNull: false },
-    name: { type: DataTypes.STRING(200), allowNull: false },
+    userName: { type: DataTypes.STRING(200), allowNull: false },
     email: { type: DataTypes.STRING(200), allowNull: false },
     imageId: { type: DataTypes.BIGINT, allowNull: true },
     updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
