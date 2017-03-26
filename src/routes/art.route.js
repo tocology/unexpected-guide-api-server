@@ -10,6 +10,6 @@ router.route('/:artId')
   .get(artsCtrl.get);
 
 router.route('/:artId/voices')
-  .get(artsCtrl.listVoiceById)
+  .get(artsCtrl.listVoiceById);
 
 export default router;
