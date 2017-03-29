@@ -46,7 +46,7 @@ export default class Firebase {
             const promise = req.url === '/login' ? _updateUser : _getUser;
 
             return promise(userRecord).then(user => {
-              req.user = user.userId;
+              req.userId = user.userId;
               return next();
             });
         }).catch(error => {
