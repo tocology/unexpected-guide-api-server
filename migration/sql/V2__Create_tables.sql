@@ -23,6 +23,20 @@ CREATE TABLE `unexpectedguide`.`artists` (
     PRIMARY KEY (`artistId`)
 ) COMMENT = '작가 정보';
 
+CREATE TABLE `unexpectedguide`.`prevoices` (
+    `prevoiceId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `docentId` BIGINT NOT NULL COMMENT '도슨트 ID',
+    `artName` VARCHAR(200) NOT NULL COMMENT '작품 이름',
+    `artistName` VARCHAR(100) DEFAULT NULL COMMENT '작가 이름',
+    `description` TEXT(4000) DEFAULT NULL COMMENT '음성 설명',
+    `price` BIGINT DEFAULT 0 COMMENT '음성 가격',
+    `url` VARCHAR(2083) NOT NULL COMMENT '음성 URL',
+    `prevoiceStatus` VARCHAR(30) NOT NULL DEFAULT 'PENDING' COMMENT '예비음성 상태(PENDING, REGISTERED, ...)',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`prevoiceId`)
+) COMMENT = '예비음성 정보';
+
 CREATE TABLE `unexpectedguide`.`voices` (
     `voiceId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `url` VARCHAR(2083) NOT NULL COMMENT '음성 URL',
