@@ -25,6 +25,7 @@
   "author": "tocology",
   "homepage": "https://bitbucket.org/failnicely/api_server#readme",
   "dependencies": {
+    "aws-cloudfront-sign": "^2.2.0",
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
@@ -43,6 +44,7 @@
     "joi": "^10.1.0",
     "jsonwebtoken": "^7.2.1",
     "method-override": "^2.3.7",
+    "moment": "^2.18.1",
     "morgan": "^1.7.0",
     "mysql": "^2.13.0",
     "mysql2": "^1.1.2",

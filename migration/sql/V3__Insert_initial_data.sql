@@ -22,16 +22,16 @@ INSERT INTO artists(artistId, koreanName, englishName, imageId, countryId, birth
 (3, '레오나르도 디 세르 피에로 다 빈치', 'Leonardo di ser Piero da Vinci', 102, 1, '1452-04-15', '1519-05-02');
 
 INSERT INTO voices(voiceId, url, artId, docentId, price, avgStarPoint, totLikeCount, description, enableStatus) VALUES
-(1, 'https://s3.ap-northeast-2.amazonaws.com/unexpected-guide/voice/voice_01.mp3', 1, 1, 500, 4.8, 131,  '역사적 설명에 기반한 작품으로 떠나는 여행', 'ACTIVE'),
-(2, 'https://s3.ap-northeast-2.amazonaws.com/unexpected-guide/voice/voice_01.mp3', 1, 1, 1000, 4.6, 192, '숨겨두었던 스토리를 들을 수 있는 기회', 'ACTIVE'),
-(3, 'https://s3.ap-northeast-2.amazonaws.com/unexpected-guide/voice/voice_01.mp3', 1, 2, 1000, 4.2, 204, '안녕하세요. 도슨트 조형재입니다. 지금 바로 시작합니다.', 'ACTIVE'),
-(4, 'https://s3.ap-northeast-2.amazonaws.com/unexpected-guide/voice/voice_01.mp3', 1, 2, 1200, 4.9, 41, '도슨트 황준호입니다. 과거로 떠나는 여행, 제단화의 숨겨진 비밀을 알려드립니다.', 'ACTIVE'),
-(5, 'https://s3.ap-northeast-2.amazonaws.com/unexpected-guide/voice/voice_02.mp3', 1, 3, 700, 4.7, 502, '스테파네스키는 어떤 내용을 숨기고 있을까요? 답을 알려드립니다.', 'ACTIVE'),
-(6, 'https://s3.ap-northeast-2.amazonaws.com/unexpected-guide/voice/voice_02.mp3', 1, 3, 800, 4.1, 255, '20년동안 이 이야기를 다뤄왔습니다. 함께 떠나세요.', 'ACTIVE'),
-(7, 'https://s3.ap-northeast-2.amazonaws.com/unexpected-guide/voice/voice_02.mp3', 1, 4, 1400, 5.0, 1, '도슨트 황준호입니다.', 'ACTIVE'),
-(8, 'https://s3.ap-northeast-2.amazonaws.com/unexpected-guide/voice/voice_02.mp3', 1, 4, 500, 0.0, 0, '', 'ACTIVE'),
-(9, 'https://s3.ap-northeast-2.amazonaws.com/unexpected-guide/voice/voice_02.mp3', 1, 1, 700, 4.5, 24, null, 'ACTIVE'),
-(10, 'https://s3.ap-northeast-2.amazonaws.com/unexpected-guide/voice/voice_02.mp3', 1, 1, 900, 5.0, 2, '', 'ACTIVE');
+(1, 'voice/voice_01.mp3', 1, 1, 500, 4.8, 131,  '역사적 설명에 기반한 작품으로 떠나는 여행', 'ACTIVE'),
+(2, 'voice/voice_01.mp3', 1, 1, 1000, 4.6, 192, '숨겨두었던 스토리를 들을 수 있는 기회', 'ACTIVE'),
+(3, 'voice/voice_01.mp3', 1, 2, 1000, 4.2, 204, '안녕하세요. 도슨트 조형재입니다. 지금 바로 시작합니다.', 'ACTIVE'),
+(4, 'voice/voice_01.mp3', 1, 2, 1200, 4.9, 41, '도슨트 황준호입니다. 과거로 떠나는 여행, 제단화의 숨겨진 비밀을 알려드립니다.', 'ACTIVE'),
+(5, 'voice/voice_02.mp3', 1, 3, 700, 4.7, 502, '스테파네스키는 어떤 내용을 숨기고 있을까요? 답을 알려드립니다.', 'ACTIVE'),
+(6, 'voice/voice_02.mp3', 1, 3, 800, 4.1, 255, '20년동안 이 이야기를 다뤄왔습니다. 함께 떠나세요.', 'ACTIVE'),
+(7, 'voice/voice_02.mp3', 1, 4, 1400, 5.0, 1, '도슨트 황준호입니다.', 'ACTIVE'),
+(8, 'voice/voice_02.mp3', 1, 4, 500, 0.0, 0, '', 'ACTIVE'),
+(9, 'voice/voice_02.mp3', 1, 1, 700, 4.5, 24, null, 'ACTIVE'),
+(10, 'voice/voice_02.mp3', 1, 1, 900, 5.0, 2, '', 'ACTIVE');
 
 INSERT INTO countries(countryId, koreanName, englishName, countryCode) VALUES
 (1, '이탈리아', 'Italy', 'IT');
