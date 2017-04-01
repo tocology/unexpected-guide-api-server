@@ -58,4 +58,5 @@ INSERT INTO voice_purchases(voicePurchaseId, userId, voiceId, playStartedAt) VAL
 (4, 3, 3, DATE_SUB(NOW(), INTERVAL 1 HOUR)),
 (5, 5, 1, null),
 (6, 5, 2, null),
-(7, 7, 1, null);
+(7, 6, 2, null),
+(8, 7, 1, null);
