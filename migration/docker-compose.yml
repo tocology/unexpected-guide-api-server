@@ -1,5 +1,5 @@
 mysql:
-    container_name: mysql_unexpectedguide
+    container_name: unexpectedguide_mysql
     image: mysql:latest
     environment:
         - MYSQL_ROOT_PASSWORD=failnicely
