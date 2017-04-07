@@ -12,6 +12,7 @@ export default {
         params: {
             options: {
                 dialect: 'mysql',
+                host: 'unexpectedguide_mysql',
                 port: 3306,
 
                 pool: {

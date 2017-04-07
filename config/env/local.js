@@ -11,6 +11,7 @@ export default {
         params: {
             options: {
                 dialect: 'mysql',
+                host: 'localhost',
                 port: 3305,
 
                 pool: {

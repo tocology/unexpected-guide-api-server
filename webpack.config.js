@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const fs = require('fs');
 const glob = require('glob');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 var nodeModules = {};
 fs.readdirSync('node_modules')
@@ -18,7 +20,8 @@ module.exports = {
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
     root      : [path.resolve(__dirname, '')],
-    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js'],
+    modulesDirectories: ['node_modules']
   },
   module: {
     loaders: [
@@ -36,15 +39,24 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new CleanWebpackPlugin(['build'], {
+      root: path.resolve(__dirname, ''),
+      verbose: true,
+      dry: false,
+      exclude: [],
+      watch: true
+    })
+  ],
   node: {
     __filename: true,
     __dirname: true
   },
   target: 'node',
+  externals: [nodeModules],
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'server.js',
+    filename: 'server.[chunkhash].js',
     libraryTarget: 'commonjs'
-  },
-  externals : nodeModules
+  }
 }
