@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint config server test",
     "lint:fix": "npm run lint --fix",
-    "build": "npm run lint && webpack --node",
+    "build": "npm run lint && ./node_modules/.bin/webpack --node",
     "serve": "./node_modules/.bin/cross-env NODE_ENV=production ./node_modules/.bin/forever start -l forever.log -a build/server.*.js",
     "serve:dev:bg": "./node_modules/.bin/cross-env NODE_ENV=development ./node_modules/.bin/forever start -l forever.log -a build/server.*.js",
     "serve:dev": "./node_modules/.bin/cross-env NODE_ENV=development ./node_modules/.bin/forever -l forever.log -a build/server.*.js",
@@ -70,7 +70,6 @@
     "npm-run-all": "^3.1.2",
     "typescript": "^2.1.4",
     "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2",
-    "webpack-node-externals": "^1.5.4"
+    "webpack-dev-server": "^1.16.2"
   }
 }

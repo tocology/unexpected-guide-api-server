@@ -4,9 +4,9 @@ ENV PORT 3000
 
 # use changes to package.json to force Docker not to use the cache
 # # when we change our application's nodejs dependencies:
-ADD package.json /tmp/package.json
-RUN cd /tmp && npm install --no-bin-links --no-color --no-progress || npm install --no-bin-links --no-color --no-progress
-RUN mkdir -p /var/www && cp -a /tmp/node_modules /var/www/
+# ADD package.json /tmp/package.json
+# RUN cd /tmp && npm install --no-bin-links --no-color --no-progress || npm install --no-bin-links --no-color --no-progress
+# RUN mkdir -p /var/www && cp -a /tmp/node_modules /var/www/
 
 # From here we load our application's code in, therefore the previous docker
 # "layer" that has been cached will be used if possible
@@ -15,5 +15,4 @@ ADD . /var/www
 
 EXPOSE 3000
 
-RUN npm run build
 CMD npm run serve:dev

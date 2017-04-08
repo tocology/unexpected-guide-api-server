@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const fs = require('fs');
 const glob = require('glob');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
 
 var nodeModules = {};
 fs.readdirSync('node_modules')
