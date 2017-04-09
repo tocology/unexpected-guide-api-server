@@ -12,7 +12,7 @@ ENV PORT 3000
 # From here we load our application's code in, therefore the previous docker
 # "layer" that has been cached will be used if possible
 WORKDIR /var/www
-ADD ./ /var/www
+ADD ./. /var/www
 
 EXPOSE 3000
 
