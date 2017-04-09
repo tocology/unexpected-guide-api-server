@@ -1,11 +1,11 @@
 export default {
     env: 'local',
     // MONGOOSE_DEBUG: true,
-    jwtSecret: 'besoul-api-development',
+    jwtSecret: 'uxguide-api-development',
     port: 3000,
     // for MySQL setup
     mysql: {
-        database: 'unexpectedguide',
+        database: 'uxguide',
         username: 'succeednicely',
         password: 'failnicely',
         params: {

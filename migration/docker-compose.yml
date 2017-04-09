@@ -1,14 +1,14 @@
 version: '3'
 services:
     mysql:
-        container_name: unexpectedguide_mysql
+        container_name: uxguide_mysql
         build:
             context: ./mysql
             args:
                 - MYSQL_ROOT_PASSWORD=failnicely
                 - MYSQL_USER=guide
                 - MYSQL_PASSWORD=failnicely
-                - MYSQL_DATABASE=unexpectedguide
+                - MYSQL_DATABASE=uxguide
         ports:
             - "3305:3306"
         volumes:

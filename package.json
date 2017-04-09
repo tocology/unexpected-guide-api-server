@@ -1,5 +1,5 @@
 {
-  "name": "api_server",
+  "name": "api-server",
   "version": "1.0.0",
   "description": "API Server for '뜻밖의, 가이드' App",
   "main": "index.js",

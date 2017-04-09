@@ -1,18 +1,18 @@
 export default {
     env: 'development',
     // MONGOOSE_DEBUG: true,
-    jwtSecret: 'besoul-api-development',
+    jwtSecret: 'uxguide-api-development',
     port: 3000,
     // for MySQL setup
     // todo: set mysql connection port
     mysql: {
-        database: 'unexpectedguide',
+        database: 'uxguide',
         username: 'succeednicely',
         password: 'failnicely',
         params: {
             options: {
                 dialect: 'mysql',
-                host: 'unexpectedguide_mysql',
+                host: 'uxguide_mysql',
                 port: 3306,
 
                 pool: {
