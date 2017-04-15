@@ -25,13 +25,16 @@ CREATE TABLE `uxguide`.`artists` (
 
 CREATE TABLE `uxguide`.`prevoices` (
     `prevoiceId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `docentId` BIGINT NOT NULL COMMENT '도슨트 ID',
+    `userId` BIGINT NOT NULL COMMENT '사용자 ID',
     `artName` VARCHAR(200) NOT NULL COMMENT '작품 이름',
     `artistName` VARCHAR(100) DEFAULT NULL COMMENT '작가 이름',
+    `address` VARCHAR(500) DEFAULT NULL COMMENT '주소',
+    `zipCode` VARCHAR(10) DEFAULT NULL COMMENT '우편 번호',
     `description` TEXT(4000) DEFAULT NULL COMMENT '음성 설명',
     `price` BIGINT DEFAULT 0 COMMENT '음성 가격',
     `url` VARCHAR(2083) NOT NULL COMMENT '음성 URL',
     `prevoiceStatus` VARCHAR(30) NOT NULL DEFAULT 'PENDING' COMMENT '예비음성 상태(PENDING, REGISTERED, ...)',
+    `prevoiceType` VARCHAR(30) NOT NULL COMMENT '예비음성 타입(ART, PLACE, ...)',
     `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
     `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
     PRIMARY KEY (`prevoiceId`)

@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
     avgStarPoint: { type: DataTypes.DOUBLE, allowNull: false },
     totLikeCount: { type: DataTypes.BIGINT, allowNull: false },
     description: { type: DataTypes.TEXT, allowNull: true },
-    enableStatus: { type: DataTypes.ENUM('ACTIVE', 'INACTIVE'), allowNull: false },
+    enableStatus: { type: DataTypes.ENUM('ACTIVE', 'INACTIVE'), defaultValue: 'ACTIVE', allowNull: false },
     updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
     createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW }
   }, {

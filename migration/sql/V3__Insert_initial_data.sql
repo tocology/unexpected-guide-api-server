@@ -60,3 +60,7 @@ INSERT INTO voice_purchases(voicePurchaseId, userId, voiceId, playStartedAt) VAL
 (6, 5, 2, null),
 (7, 6, 2, null),
 (8, 7, 1, null);
+
+INSERT INTO prevoices(prevoiceId, userId, artName, artistName, address, zipCode, description, price, url, prevoiceStatus, prevoiceType) VALUES
+(1, 6, '불국사', null, '경상북도 경주시 진현동 15', '780-400', '한국 불교의 역사가 살아 숨쉬는 이곳의 스토리를 들려드려요', 500, 'voice/voice_02.mp3', 'PENDING', 'PLACE'),
+(2, 7, '백제고분', null, '서울특별시 송파구 방이동 산47-4', '05629', '과연 이 고분의 주인공은 누구인가?', 500, 'voice/voice_02.mp3', 'REGISTERED', 'PLACE');
