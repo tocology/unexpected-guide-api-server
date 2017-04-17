@@ -18,7 +18,18 @@ function list (req, res, next) {
     .catch(e => next(e));
 }
 
+function get (req, res, next) {
+  const { prevoiceId } = req.params;
+
+  models.Prevoice.findOne({
+    where: {
+      'prevoiceId': prevoiceId
+    }
+  }).then(prevoice => res.json(prevoice))
+    .catch(e => next(e));
+}
+
 export default {
-  list
+  list, get
 }
 
