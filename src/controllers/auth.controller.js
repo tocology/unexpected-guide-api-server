@@ -50,8 +50,7 @@ import config from '../../config/env';
 // }
 
 function login(req, res, next) {
-  console.log(req.userId);
-  if (!req.userId) return res.json(true);
+  if (req.userId) return res.json(true);
   return res.json(false);
 }
 

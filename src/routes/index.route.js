@@ -5,6 +5,7 @@ import artRoutes from './art.route';
 import docentRoutes from './docent.route';
 import voiceRoutes from './voice.route';
 import purchaseRoutes from './purchase.route';
+import prevoiceRoutes from './prevoice.route';
 
 const router = express.Router();
 
@@ -19,5 +20,6 @@ router.use('/arts', artRoutes);
 router.use('/docents', docentRoutes);
 router.use('/voices', voiceRoutes);
 router.use('/purchases', purchaseRoutes);
+router.use('/prevoices', prevoiceRoutes);
 
 export default router;
