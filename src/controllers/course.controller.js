@@ -25,7 +25,7 @@ function listByStateId (req, res, next) {
 function get (req, res, next) {
   const { courseId } = req.params;
 
-  model.Course.findOne({
+  models.Course.findOne({
     include: [
       { model: models.Image, as: 'mapImage' },
       { model: models.User, as: 'guide' },

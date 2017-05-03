@@ -5,12 +5,6 @@ function get (req, res, next) {
   const { voiceId } = req.params;
 
   models.Voice.findOne({
-    include: [
-      { model: models.Art, as: 'art', required: true, include: [
-        { model: models.Image, as: 'images', through: { attributes: [] } }
-      ]},
-      { model: models.User, as: 'docent', required: true }
-    ],
     where: {
       'voiceId': voiceId
     }
