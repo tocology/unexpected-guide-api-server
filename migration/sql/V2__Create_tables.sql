@@ -1,28 +1,3 @@
-CREATE TABLE `uxguide`.`arts` (
-    `artId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `koreanName` VARCHAR(200) DEFAULT NULL COMMENT '작품 한글 이름',
-    `englishName` VARCHAR(200) NOT NULL COMMENT '작품 영문 이름',
-    `artistId` BIGINT DEFAULT NULL COMMENT '작가 ID',
-    `thumbImageId` BIGINT DEFAULT NULL COMMENT '썸네일 이미지 ID',
-    `description` TEXT(4000) DEFAULT NULL COMMENT '작품 설명',
-    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
-    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
-    PRIMARY KEY (`artId`)
-) COMMENT = '작품 정보';
-
-CREATE TABLE `uxguide`.`artists` (
-    `artistId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `koreanName` VARCHAR(100) DEFAULT NULL COMMENT '작가 한글 이름',
-    `englishName` VARCHAR(100) NOT NULL COMMENT '작가 영문 이름',
-    `imageId` BIGINT DEFAULT NULL COMMENT '작가 이미지',
-    `countryId` BIGINT NOT NULL COMMENT '국가 ID',
-    `birthday` VARCHAR(20) DEFAULT NULL COMMENT '탄생일',
-    `deathday` VARCHAR(20) DEFAULT NULL COMMENT '사망일',
-    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
-    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
-    PRIMARY KEY (`artistId`)
-) COMMENT = '작가 정보';
-
 CREATE TABLE `uxguide`.`prevoices` (
     `prevoiceId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `userId` BIGINT NOT NULL COMMENT '사용자 ID',
@@ -40,12 +15,23 @@ CREATE TABLE `uxguide`.`prevoices` (
     PRIMARY KEY (`prevoiceId`)
 ) COMMENT = '예비음성 정보';
 
+CREATE TABLE `uxguide`.`users` (
+    `userId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `uid` VARCHAR(200) NOT NULL COMMENT '사용자 uid',
+    `userName` VARCHAR(200) NOT NULL COMMENT '사용자 이름',
+    `email` VARCHAR(200) NOT NULL COMMENT '사용자 email',
+    `imageId` BIGINT DEFAULT NULL COMMENT '사용자 이미지',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`userId`)
+) COMMENT = '사용자 정보';
+
 CREATE TABLE `uxguide`.`voices` (
     `voiceId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `url` VARCHAR(2083) NOT NULL COMMENT '음성 URL',
-    `artId` BIGINT NOT NULL COMMENT '작품 ID',
-    `docentId` BIGINT NOT NULL COMMENT '도슨트 ID',
+    `guideId` BIGINT NOT NULL COMMENT '가이드 ID',
     `price` BIGINT DEFAULT 0 COMMENT '음성 가격',
+    `runningTime` BIGINT DEFAULT 0 COMMENT '음성 시간',
     `avgStarPoint` DOUBLE DEFAULT 0.0 COMMENT '음성 평균 Star 점수',
     `totLikeCount` BIGINT DEFAULT 0 COMMENT '음성 전체 Like 수',
     `description` TEXT(4000) DEFAULT NULL COMMENT '음성 설명',
@@ -55,9 +41,20 @@ CREATE TABLE `uxguide`.`voices` (
     PRIMARY KEY (`voiceId`)
 ) COMMENT = '음성 정보';
 
+CREATE TABLE `uxguide`.`voice_images` (
+    `voiceImageId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `voiceId` BIGINT NOT NULL COMMENT '음성 ID',
+    `imageId` BIGINT NOT NULL COMMENT '이미지 ID',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`voiceImageId`),
+    UNIQUE KEY (`voiceId`, `imageId`)
+) COMMENT = '음성 이미지 정보';
+
 CREATE TABLE `uxguide`.`voices_log` (
     `voiceLogId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `voiceId` BIGINT NOT NULL COMMENT '음성 ID',
+    `userId` BIGINT DEFAULT NULL COMMENT '사용자 ID',
     `logType` VARCHAR(30) NOT NULL COMMENT 'Log 종류(PLAY_CHECK,STAR_POINT)',
     `playCheck` INT NOT NULL DEFAULT 0 COMMENT 'play 여부(0,1)',
     `starPoint` FLOAT NOT NULL DEFAULT 0.0 COMMENT 'star 점수',
@@ -73,27 +70,6 @@ CREATE TABLE `uxguide`.`images` (
     PRIMARY KEY (`imageId`)
 ) COMMENT = '이미지 정보';
 
-CREATE TABLE `uxguide`.`art_images` (
-    `artImageId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `artId` BIGINT NOT NULL COMMENT '작품 ID',
-    `imageId` BIGINT NOT NULL COMMENT '이미지 ID',
-    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
-    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
-    PRIMARY KEY (`artImageId`),
-    UNIQUE KEY (`artId`, `imageId`)
-) COMMENT = '작품과 이미지 간 맵핑 테이블';
-
-CREATE TABLE `uxguide`.`users` (
-    `userId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `uid` VARCHAR(200) NOT NULL COMMENT '사용자 uid',
-    `userName` VARCHAR(200) NOT NULL COMMENT '사용자 이름',
-    `email` VARCHAR(200) NOT NULL COMMENT '사용자 email',
-    `imageId` BIGINT DEFAULT NULL COMMENT '사용자 이미지',
-    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
-    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
-    PRIMARY KEY (`userId`)
-) COMMENT = '사용자 정보';
-
 CREATE TABLE `uxguide`.`voice_purchases` (
     `voicePurchaseId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `userId` BIGINT NOT NULL COMMENT '사용자 ID',
@@ -105,15 +81,15 @@ CREATE TABLE `uxguide`.`voice_purchases` (
     UNIQUE KEY (`userId`, `voiceId`)
 ) COMMENT = '음성 구매 정보';
 
-CREATE TABLE `uxguide`.`docents_log` (
-    `docentLogId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `docentId` BIGINT NOT NULL COMMENT '도슨트 ID',
+CREATE TABLE `uxguide`.`guides_log` (
+    `guideLogId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `guideId` BIGINT NOT NULL COMMENT '가이드 ID',
     `logType` VARCHAR(30) NOT NULL COMMENT 'Log 종류(LIKE_CHECK,STAR_POINT)',
     `likeCheck` INT NOT NULL DEFAULT 0 COMMENT 'like 여부(0,1)',
     `starPoint` FLOAT NOT NULL DEFAULT 0.0 COMMENT 'star 점수',
     `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
-    PRIMARY KEY (`docentLogId`)
-) COMMENT = '도슨트 Log';
+    PRIMARY KEY (`guideLogId`)
+) COMMENT = '가이드 Log';
 
 CREATE TABLE `uxguide`.`countries` (
     `countryId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
