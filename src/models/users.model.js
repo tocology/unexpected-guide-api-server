@@ -23,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
           as: 'voiceList',
           onUpdate: 'CASCADE',
           foreignKey: {
-            name: 'docentId',
+            name: 'guideId',
             allowNull: false
           }
         });

@@ -1,3 +1,6 @@
+/**
+ * Deprecated
+ */
 import models from '../models';
 
 export const defaultPageLimit = 20;

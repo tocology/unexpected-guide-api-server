@@ -9,6 +9,7 @@ import httpStatus from 'http-status';
 import expressWinston from 'express-winston';
 import expressValidation from 'express-validation';
 import helmet from 'helmet';
+
 import winstonInstance from './winston';
 import routes from '../src/routes/index.route';
 import config from './env';

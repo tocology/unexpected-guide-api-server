@@ -34,12 +34,12 @@ export default class Firebase {
     const { authorization } = req.headers;
 
     if (authorization === undefined)
-      return next(new APIError('Authorization not found', httpStatus.UNAUTHORIZED));
+      return next(new APIError('Authorization not found', httpStatus.UNAUTHORIZED, true));
 
     const [ header, token ] = authorization.split(' ');
 
     if (header !== 'Firebase')
-      return next(new APIError('Firebase Authorization not found', httpStatus.UNAUTHORIZED));
+      return next(new APIError('Firebase Authorization not found', httpStatus.UNAUTHORIZED, true));
 
     admin.auth().verifyIdToken(token).then((decodedToken) => {
         return admin.auth().getUser(decodedToken.uid).then(userRecord => {
@@ -50,11 +50,10 @@ export default class Firebase {
               return next();
             });
         }).catch(error => {
-          console.log(error);
-          return next(new APIError(`Can not retrieve user info using the token`, httpStatus.UNAUTHORIZED));
+          return next(new APIError(`Can not retrieve user info using the token`, httpStatus.UNAUTHORIZED, true));
         });
       }).catch(error => {
-        return next(new APIError(`Invalid Firebase Token : ${error.message}`, httpStatus.UNAUTHORIZED));
+        return next(new APIError(`Invalid Firebase Token : ${error.message}`, httpStatus.UNAUTHORIZED, true));
     });
   }
 

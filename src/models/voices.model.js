@@ -2,12 +2,12 @@ module.exports = function (sequelize, DataTypes) {
   const Voice = sequelize.define('Voice', {
     voiceId: { type: DataTypes.BIGINT, allowNull: false, autoIncrement: true, primaryKey: true },
     url: { type: DataTypes.STRING(2083), allowNull: false },
-    artId: { type: DataTypes.BIGINT, allowNull: false },
-    docentId: { type: DataTypes.BIGINT, allowNull: false },
-    price: { type: DataTypes.BIGINT, allowNull: false },
-    avgStarPoint: { type: DataTypes.DOUBLE, allowNull: false },
-    totLikeCount: { type: DataTypes.BIGINT, allowNull: false },
-    description: { type: DataTypes.TEXT, allowNull: true },
+    guideId: { type: DataTypes.BIGINT, allowNull: false },
+    price: { type: DataTypes.BIGINT, defaultValue: 0, allowNull: true },
+    runningTime: { type: DataTypes.BIGINT, defaultValue: 0, allowNull: true },
+    avgStarPoint: { type: DataTypes.DOUBLE, defaultValue: 0.0, allowNull: true },
+    totLikeCount: { type: DataTypes.BIGINT, defaultValue: 0, allowNull: true },
+    description: { type: DataTypes.TEXT, defaultValue: '', allowNull: true },
     enableStatus: { type: DataTypes.ENUM('ACTIVE', 'INACTIVE'), defaultValue: 'ACTIVE', allowNull: false },
     updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
     createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW }
@@ -15,19 +15,11 @@ module.exports = function (sequelize, DataTypes) {
     tableName: 'voices',
     classMethods: {
       associate: (models) => {
-        Voice.belongsTo(models.Art, {
-          as: 'art',
-          onUpdate: 'CASCADE',
-          foreignKey: {
-            name: 'artId',
-            allowNull: false
-          }
-        });
         Voice.belongsTo(models.User, {
-          as: 'docent',
+          as: 'guide',
           onUpdate: 'CASCADE',
           foreignKey: {
-            name: 'docentId',
+            name: 'guideId',
             allowNull: false
           }
         });
