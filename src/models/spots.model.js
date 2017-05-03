@@ -1,13 +1,14 @@
 module.exports = function (sequelize, DataTypes) {
   const Spot = sequelize.define('Spot', {
     spotId: { type: DataTypes.BIGINT, allowNull: false, autoIncrement: true, primaryKey: true },
+    thumbImageId: { type: DataTypes.BIGINT, allowNull: false },
     artistId: { type: DataTypes.BIGINT, allowNull: true },
     voiceId: { type: DataTypes.BIGINT, allowNull: false },
     locationId: { type: DataTypes.BIGINT, allowNull: false },
     koreanName: { type: DataTypes.STRING(200), allowNull: true },
     englishName: { type: DataTypes.STRING(200), allowNull: false },
     description: { type: DataTypes.TEXT, allowNull: true },
-    spotType: { type: DataTypes.ENUM('BUILDING', 'ART'), defaultValue: 'BUILDING', allowNull: false },
+    spotType: { type: DataTypes.ENUM('BUILDING', 'ART', 'RESTAURANT'), defaultValue: 'BUILDING', allowNull: false },
     enableStatus: { type: DataTypes.ENUM('ACTIVE', 'INACTIVE'), defaultValue: 'ACTIVE', allowNull: false },
     updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
     createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW }
@@ -15,6 +16,15 @@ module.exports = function (sequelize, DataTypes) {
     tableName: 'spots',
     classMethods: {
       associate: (models) => {
+        Spot.belongsTo(models.Image, {
+          as: 'thumbImage',
+          onUpdate: 'CASCADE',
+          foreignKey: {
+            name: 'thumbImageId',
+            allowNull: false
+          }
+        });
+
         Spot.belongsTo(models.Artist, {
           as: 'artist',
           onUpdate: 'CASCADE',

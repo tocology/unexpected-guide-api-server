@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
     tableName: 'course_spots',
     classMethods: {
       associate: (models) => {
-        CourseSpot.hasOne(models.Spot, {
+        CourseSpot.belongsTo(models.Spot, {
           as: 'spot',
           onUpdate: 'CASCADE',
           foreignKey: {

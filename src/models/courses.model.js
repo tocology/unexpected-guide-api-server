@@ -4,12 +4,18 @@ module.exports = function (sequelize, DataTypes) {
     stateId: { type: DataTypes.BIGINT, allowNull: false },
     prelistenVoiceId: { type: DataTypes.BIGINT, allowNull: false },
     mapImageId: { type: DataTypes.BIGINT, allowNull: false },
+    routeImageId: { type: DataTypes.BIGINT, allowNull: false},
     guideId: { type: DataTypes.BIGINT, allowNull: false },
     title: { type: DataTypes.STRING(200), allowNull: false },
     price: { type: DataTypes.BIGINT, defaultValue: 0, allowNull: true },
+    buildingCount: { type: DataTypes.INTEGER, defaultValue: 0, allowNull: true },
+    artCount: { type: DataTypes.INTEGER, defaultValue: 0, allowNull: true },
+    restaurantCount: { type: DataTypes.INTEGER, defaultValue: 0, allowNull: true },
     totRunningTime: { type: DataTypes.BIGINT, defaultValue: 0, allowNull: true },
     avgStarPoint: { type: DataTypes.DOUBLE, defaultValue: 0.0, allowNull: true },
+    totReviewCount: { type: DataTypes.BIGINT, defaultValue: 0, allowNull: true },
     totLikeCount: { type: DataTypes.BIGINT, defaultValue: 0, allowNull: true },
+    totViewCount: { type: DataTypes.BIGINT, defaultValue: 0, allowNull: true },
     description: { type: DataTypes.TEXT, allowNull: true },
     enableStatus: { type: DataTypes.ENUM('ACTIVE', 'INACTIVE'), defaultValue: 'ACTIVE', allowNull: false },
     updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
@@ -45,6 +51,15 @@ module.exports = function (sequelize, DataTypes) {
           }
         });
 
+        Course.belongsTo(models.Image, {
+          as: 'routeImage',
+          onUpdate: 'CASCADE',
+          foreignKey: {
+            name: 'routeImageId',
+            allowNull: false
+          }
+        });
+
         Course.belongsTo(models.User, {
           as: 'guide',
           onUpdate: 'CASCADE',
@@ -61,20 +76,20 @@ module.exports = function (sequelize, DataTypes) {
           otherKey: 'spotId'
         });
 
+        Course.hasMany(models.HashTag, {
+          as: 'hashTags',
+          onUpdate: 'CASCADE',
+          foreignKey: {
+            name: 'courseId',
+            allowNull: false
+          }
+        });
+
         Course.belongsToMany(models.Image, {
           as: 'images',
           through: models.CourseImage,
           foreignKey: 'courseId',
           otherKey: 'imageId'
-        });
-
-        Course.hasMany(models.HashTag, {
-          as: 'hashTags',
-          onUpdate: 'CASCADE',
-          foreignKey: {
-            name: 'hashTagId',
-            allowNull: false
-          }
         });
       }
     }

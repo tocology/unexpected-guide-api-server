@@ -8,7 +8,8 @@ function listByStateId (req, res, next) {
 
   models.Course.findAll({
     include: [
-      { model: models.User, as: 'guide' },
+      { model: models.User, as: 'guide', include: { model: models.Image, as: 'profileImage' }},
+      { model: models.HashTag, as: 'hashTags' },
       { model: models.Image, as: 'images', through: { attributes: [] }}
     ],
     where: {
@@ -28,14 +29,19 @@ function get (req, res, next) {
   models.Course.findOne({
     include: [
       { model: models.Image, as: 'mapImage' },
-      { model: models.User, as: 'guide' },
+      { model: models.Image, as: 'routeImage' },
+      { model: models.User, as: 'guide', include: { model: models.Image, as: 'profileImage' }},
+      { model: models.HashTag, as: 'hashTags' },
       { model: models.Image, as: 'images', through: { attributes: [] }}
     ],
     where: {
       'courseId': courseId
     },
     subQuery: false
-  }).then(course => res.json(course))
+  }).then(course => {
+    // return immediately;
+    res.json(course);
+  })
     .catch(e => next(e));
 }
 

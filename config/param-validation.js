@@ -1,6 +1,14 @@
 import Joi from 'joi';
 
 export default {
+    // POST /api/courses/:courseId/reviews
+    createReview: {
+        body: {
+            starPoint: Joi.number().required(),
+            comments: Joi.string()
+        }
+    },
+
     // POST /api/users
     createUser: {
         body: {

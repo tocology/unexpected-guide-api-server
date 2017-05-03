@@ -6,9 +6,10 @@ function listSpotByCourseId (req, res, next) {
   models.CourseSpot.findAll({
     include: [
       { model: models.Spot, as: 'spot', required: true, attributes: { exclude: ['locationId', 'voiceId', 'artistId'] }, include: [
-        { model: models.Location, as: 'location', required: true, foreignKey: { name: 'locationId', allowNull: false }},
-        { model: models.Voice, as: 'voice', required: true, foreignKey: { name: 'voiceId', allowNull: false }},
-        { model: models.Artist, as: 'artist', foreignKey: { name: 'artistId', allowNull: true }}
+        { model: models.Image, as: 'thumbImage', required: true },
+        { model: models.Location, as: 'location', required: true },
+        { model: models.Voice, as: 'voice', required: true },
+        { model: models.Artist, as: 'artist' }
       ]}
     ],
     where: {
