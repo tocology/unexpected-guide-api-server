@@ -1,4 +1,8 @@
+import moment from 'moment';
+import httpStatus from 'http-status';
+
 import models from '../models';
+import APIError from '../helpers/APIError';
 
 function getPurchaseByVoiceId (req, res, next) {
   const { userId } = req;
@@ -26,10 +30,30 @@ function getPurchaseByCourseId (req, res, next) {
         courseId: courseId
       }
     }
-  }).then(coursePurchase => res.json(coursePurchase))
-    .cat(e => next(e));
+  }).then(coursePurchase => {
+    const playStartedAt = coursePurchase.getDataValue('playStartedAt');
+
+    if(playStartedAt && moment(playStartedAt).isAfter(moment().utc().add(1, 'day'))) {
+      throw new APIError('Payment Expired', httpStatus.PAYMENT_REQUIRED, true);
+    }
+
+    res.json(coursePurchase);
+  })
+    .catch(e => next(e));
+}
+
+function addCoursePurchase (req, res, next) {
+  const { userId } = req;
+  const { courseId } = req.params;
+
+  models.CoursePurchase.build({
+    'userId': userId,
+    'courseId': courseId
+  }).save().then(coursePurchase => {
+    res.json(coursePurchase);
+  }).catch(e => next(e));
 }
 
 export default {
-  getPurchaseByVoiceId, getPurchaseByCourseId
+  getPurchaseByVoiceId, getPurchaseByCourseId, addCoursePurchase
 };

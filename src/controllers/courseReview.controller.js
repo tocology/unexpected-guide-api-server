@@ -31,7 +31,7 @@ function addCourseReview (req, res, next) {
     'userId': userId,
     'starPoint': starPoint,
     'comments': comments
-  }).save().then((courseReview) => {
+  }).save().then(courseReview => {
     res.json(courseReview);
   }).catch(e => next(e));
 }
