@@ -15,7 +15,7 @@ router.route('/:courseId')
   .get(courseLogCtrl.addCourseLog, courseCtrl.get);
 
 router.route('/:courseId/spots')
-  .get(courseSpotCtrl.listSpotByCourseId);
+  .get(Firebase.authCheck, courseSpotCtrl.listSpotByCourseId);
 
 router.route('/:courseId/reviews')
   .get(courseReviewCtrl.listByCourseId);

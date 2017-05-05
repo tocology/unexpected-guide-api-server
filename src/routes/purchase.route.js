@@ -8,6 +8,9 @@ router.route('/voices/:voiceId')
   .get(Firebase.authCheck, purchaseCtrl.getPurchaseByVoiceId);
 
 router.route('/courses/:courseId')
-  .get(Firebase.authCheck, )
+  .get(Firebase.authCheck, purchaseCtrl.getPurchaseByCourseId);
+
+router.route('/courses/:courseId')
+  .post(Firebase.authCheck, purchaseCtrl.addCoursePurchase);
 
 export default router;
