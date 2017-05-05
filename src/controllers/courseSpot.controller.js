@@ -27,6 +27,8 @@ function listSpotByCourseId (req, res, next) {
     // respond spots
     res.json(reducedSpots);
 
+    const today = moment().utc() + "";
+
     models.CoursePurchase.findOne({
       where: {
         'userId': userId,

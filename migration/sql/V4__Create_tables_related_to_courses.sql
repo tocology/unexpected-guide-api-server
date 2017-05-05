@@ -100,8 +100,7 @@ CREATE TABLE `uxguide`.`course_purchases` (
     `playStartedAt` DATETIME DEFAULT NULL COMMENT '유효기간',
     `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
     `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
-    PRIMARY KEY (`coursePurchaseId`),
-    UNIQUE KEY (`userId`, `courseId`)
+    PRIMARY KEY (`coursePurchaseId`)
 ) COMMENT = '코스 구매 정보';
 
 CREATE TABLE `uxguide`.`course_logs` (
