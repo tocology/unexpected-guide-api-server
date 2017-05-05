@@ -7,6 +7,9 @@ const router = express.Router(); // eslint-disable-line new-cap
 router.route('/voices/:voiceId')
   .get(Firebase.authCheck, purchaseCtrl.getPurchaseByVoiceId);
 
+router.route('/courses')
+  .get(Firebase.authCheck, purchaseCtrl.listCoursePurchase);
+
 router.route('/courses/:courseId')
   .get(Firebase.authCheck, purchaseCtrl.getPurchaseByCourseId);
 
