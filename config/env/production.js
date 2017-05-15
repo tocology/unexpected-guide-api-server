@@ -1,5 +1,5 @@
 export default {
-  env: 'production',
+  env: 'development',
   // MONGOOSE_DEBUG: true,
   jwtSecret: 'uxguide-api-development',
   port: 3000,
@@ -12,7 +12,7 @@ export default {
     params: {
       options: {
         dialect: 'mysql',
-        host: '52.79.130.5',
+        host: 'uxguide_mysql',
         port: 3306,
 
         pool: {
