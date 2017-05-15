@@ -4,7 +4,6 @@ export default {
   jwtSecret: 'uxguide-api-development',
   port: 3000,
   // for MySQL setup
-  // todo: set mysql connection port
   mysql: {
     database: 'uxguide',
     username: 'succeednicely',
