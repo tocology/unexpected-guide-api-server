@@ -16,4 +16,4 @@ ADD ./. /var/www
 
 EXPOSE 3000
 
-CMD npm run serve:dev
+CMD npm run serve
