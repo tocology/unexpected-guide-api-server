@@ -18,7 +18,7 @@ function listByStateId (req, res, next) {
     offset: (page - 1) * defaultPageLimit,
     limit: defaultPageLimit,
     order: 'avgStarPoint DESC',
-    subQuery: false
+    // subQuery: false
   }).then(courses => res.json(courses))
     .catch(e => next(e));
 }
