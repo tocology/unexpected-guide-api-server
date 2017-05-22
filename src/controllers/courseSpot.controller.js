@@ -17,6 +17,7 @@ function listSpotByCourseId (req, res, next) {
     where: {
       'courseId': courseId
     },
+    order: 'courseSpotId',
     subQuery: false
   }).then(results => {
     const reducedSpots = results.reduce((acc, result) => {
@@ -26,8 +27,6 @@ function listSpotByCourseId (req, res, next) {
 
     // respond spots
     res.json(reducedSpots);
-
-    const today = moment().utc() + "";
 
     models.CoursePurchase.findOne({
       where: {
