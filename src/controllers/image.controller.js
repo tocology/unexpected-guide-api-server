@@ -1,15 +1,16 @@
 import models from '../models';
 
 function get (req, res, next) {
-  const { spotId } = req.params;
+  const { imageId } = req.params;
 
-  models.Spot.findOne({
+  models.Image.findOne({
     where: {
-      'spotId': spotId
+      'imageId': imageId
     }
-  }).then(spot => res.json(spot))
+  }).then(image => res.json(image))
     .catch(e => next(e));
 }
+
 export default {
   get
 }

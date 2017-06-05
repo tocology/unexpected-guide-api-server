@@ -7,8 +7,10 @@ import voiceRoutes from './voice.route';
 import purchaseRoutes from './purchase.route';
 import prevoiceRoutes from './prevoice.route';
 import courseRoutes from './course.route';
+import spotRoutes from './spot.route';
 import countryRoutes from './country.route';
 import stateRoutes from './state.route';
+import imageRoutes from './image.route';
 
 const router = express.Router();
 
@@ -25,7 +27,9 @@ router.use('/voices', voiceRoutes);
 router.use('/purchases', purchaseRoutes);
 router.use('/prevoices', prevoiceRoutes);
 router.use('/courses', courseRoutes);
+router.use('/spots', spotRoutes);
 router.use('/countries', countryRoutes);
 router.use('/states', stateRoutes);
+router.use('/images', imageRoutes);
 
 export default router;

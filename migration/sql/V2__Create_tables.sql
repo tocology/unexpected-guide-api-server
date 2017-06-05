@@ -70,17 +70,6 @@ CREATE TABLE `uxguide`.`images` (
     PRIMARY KEY (`imageId`)
 ) COMMENT = '이미지 정보';
 
-CREATE TABLE `uxguide`.`voice_purchases` (
-    `voicePurchaseId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `userId` BIGINT NOT NULL COMMENT '사용자 ID',
-    `voiceId` BIGINT NOT NULL COMMENT '음성 ID',
-    `playStartedAt` DATETIME DEFAULT NULL COMMENT '유효기간',
-    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
-    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
-    PRIMARY KEY (`voicePurchaseId`),
-    UNIQUE KEY (`userId`, `voiceId`)
-) COMMENT = '음성 구매 정보';
-
 CREATE TABLE `uxguide`.`guides_log` (
     `guideLogId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `guideId` BIGINT NOT NULL COMMENT '가이드 ID',

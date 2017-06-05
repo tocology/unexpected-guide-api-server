@@ -28,7 +28,7 @@ CREATE TABLE `uxguide`.`locations` (
     `locationId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `koreanName` VARCHAR(100) DEFAULT NULL COMMENT '위치 한글 이름',
     `englishName` VARCHAR(100) DEFAULT NULL COMMENT '위치 영문 이름',
-    `zipCode` VARCHAR(10) NOT NULL COMMENT '우편번호',
+    `zipCode` VARCHAR(10) DEFAULT NULL COMMENT '우편번호',
     `address` VARCHAR(255) NOT NULL COMMENT '주소',
     `lat` DOUBLE NOT NULL COMMENT '위도',
     `lng` DOUBLE NOT NULL COMMENT '경도',
@@ -43,9 +43,9 @@ CREATE TABLE `uxguide`.`locations` (
 CREATE TABLE `uxguide`.`courses` (
     `courseId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `stateId` BIGINT NOT NULL COMMENT '도시 ID',
+    `thumbImageId` BIGINT NOT NULL COMMENT '썸네일 이미지 ID',
     `prelistenVoiceId` BIGINT NOT NULL COMMENT '미리듣기 음성 ID',
     `mapImageId` BIGINT NOT NULL COMMENT '맵 이미지 ID',
-    `routeImageId` BIGINT NOT NULL COMMENT '코스 이미지 ID',
     `guideId` BIGINT NOT NULL COMMENT '가이드 ID',
     `title` VARCHAR(200) NOT NULL COMMENT '코스 타이틀(이름)',
     `price` BIGINT DEFAULT 0 COMMENT '코스 가격',
@@ -58,6 +58,7 @@ CREATE TABLE `uxguide`.`courses` (
     `totLikeCount` BIGINT DEFAULT 0 COMMENT '코스 전체 Like 수',
     `totViewCount` BIGINT DEFAULT 0 COMMENT '코스 전체 조회 수',
     `description` TEXT(4000) DEFAULT NULL COMMENT '코스 설명',
+    `guideTip` TEXT(4000) DEFAULT NULL COMMENT '코스 가이드 Tip',
     `enableStatus` VARCHAR(30) NOT NULL DEFAULT 'ACTIVE' COMMENT '코스 상태(ACTIVE,INACTIVE)',
     `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
     `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
@@ -68,6 +69,7 @@ CREATE TABLE `uxguide`.`course_images` (
     `courseImageId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `courseId` BIGINT NOT NULL COMMENT '코스 ID',
     `imageId` BIGINT NOT NULL COMMENT '이미지 ID',
+    `priority` INT NOT NULL DEFAULT 1 COMMENT '코스 이미지 순번',
     `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
     `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
     PRIMARY KEY (`courseImageId`),
@@ -78,6 +80,7 @@ CREATE TABLE `uxguide`.`course_spots` (
     `courseSpotId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `courseId` BIGINT NOT NULL COMMENT '코스 ID',
     `spotId` BIGINT NOT NULL COMMENT '장소 ID',
+    `priority` INT NOT NULL DEFAULT 1 COMMENT '코스 지점 순번',
     `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
     `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
     PRIMARY KEY (`courseSpotId`),
@@ -137,12 +140,11 @@ CREATE TABLE `uxguide`.`course_likes` (
 -- ************************************
 CREATE TABLE `uxguide`.`spots` (
     `spotId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `thumbImageId` BIGINT NOT NULL COMMENT '썸네일 이미지 ID',
     `artistId` BIGINT DEFAULT NULL COMMENT '작가 ID',
     `voiceId` BIGINT DEFAULT NULL COMMENT '음성 ID',
-    `locationId` BIGINT NOT NULL COMMENT '위치 ID',
-    `koreanName` VARCHAR(200) DEFAULT NULL COMMENT '지점 한글 이름',
-    `englishName` VARCHAR(200) NOT NULL COMMENT '지점 영문 이름',
+    `locationId` BIGINT DEFAULT NULL COMMENT '위치 ID',
+    `koreanName` VARCHAR(200) NOT NULL COMMENT '지점 한글 이름',
+    `englishName` VARCHAR(200) DEFAULT NULL COMMENT '지점 영문 이름',
     `description` TEXT(4000) DEFAULT NULL COMMENT '지점 설명',
     `spotType` VARCHAR(30) NOT NULL DEFAULT 'BUILDING' COMMENT '지점 타입(BUILDING, ART, RESTAURANT)',
     `enableStatus` VARCHAR(30) NOT NULL DEFAULT 'ACTIVE' COMMENT '지점 상태(ACTIVE,INACTIVE)',
@@ -150,6 +152,15 @@ CREATE TABLE `uxguide`.`spots` (
     `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
     PRIMARY KEY (`spotId`)
 ) COMMENT = '지점 정보';
+
+CREATE TABLE `uxguide`.`spot_inform` (
+    `spotInformId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `spotId` BIGINT NOT NULL COMMENT '지점 ID',
+    `title` VARCHAR(200) NOT NULL COMMENT '정보 제목',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`spotInformId`)
+) COMMENT = '지정 추가 정보';
 
 CREATE TABLE `uxguide`.`spot_images` (
     `spotImageId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
@@ -160,3 +171,19 @@ CREATE TABLE `uxguide`.`spot_images` (
     PRIMARY KEY (`spotImageId`),
     UNIQUE KEY (`spotId`, `imageId`)
 ) COMMENT = '지점 이미지 정보';
+
+-- ************************************
+-- Inform
+-- ************************************
+CREATE TABLE `uxguide`.`inform` (
+    `informId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `spotInformId` BIGINT NOT NULL COMMENT '지점 추가 정보 ID',
+    `infoType` VARCHAR(20) NOT NULL COMMENT '정보 TYPE (ROUTE, PUBLIC)',
+    `imageId` BIGINT DEFAULT NULL COMMENT '정보 이미지 ID',
+    `description` TEXT(4000) DEFAULT NULL COMMENT '정보 설명',
+    `priority` INT NOT NULL DEFAULT 1 COMMENT '정보 순번',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`informId`)
+) COMMENT = '추가 정보';
+

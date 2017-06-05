@@ -27,14 +27,6 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
           }
         });
-        User.hasMany(models.VoicePurchase, {
-          as: 'purchaseList',
-          onUpdate: 'CASCADE',
-          foreignKey: {
-            name: 'userId',
-            allowNull: false
-          }
-        });
       }
     }
   });

@@ -6,6 +6,7 @@ import paramValidation from '../../config/param-validation';
 
 import courseCtrl from '../controllers/course.controller';
 import courseSpotCtrl from '../controllers/courseSpot.controller';
+import courseImageCtrl from '../controllers/courseImage.controller';
 import courseReviewCtrl from '../controllers/courseReview.controller';
 import courseLogCtrl from '../controllers/courseLog.controller';
 
@@ -15,7 +16,10 @@ router.route('/:courseId')
   .get(courseLogCtrl.addCourseLog, courseCtrl.get);
 
 router.route('/:courseId/spots')
-  .get(Firebase.authCheck, courseSpotCtrl.listSpotByCourseId);
+  .get(courseSpotCtrl.listSpotByCourseId);
+
+router.route('/:courseId/images')
+  .get(courseImageCtrl.listImageByCourseId);
 
 router.route('/:courseId/reviews')
   .get(courseReviewCtrl.listByCourseId);
