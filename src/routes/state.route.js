@@ -5,9 +5,9 @@ import courseCtrl from '../controllers/course.controller';
 const router = express.Router();
 
 router.route('/')
-  .get(stateCtrl.list)
+  .get(stateCtrl.list);
 
 router.route('/:stateId/courses')
-  .get(courseCtrl.listByStateId)
+  .get(courseCtrl.listByStateId);
 
 export default router;

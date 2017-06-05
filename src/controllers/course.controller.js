@@ -8,9 +8,7 @@ function listByStateId (req, res, next) {
 
   models.Course.findAll({
     include: [
-      { model: models.User, as: 'guide', include: { model: models.Image, as: 'profileImage' }},
-      { model: models.HashTag, as: 'hashTags' },
-      { model: models.Image, as: 'images', through: { attributes: [] }}
+      { model: models.User, as: 'guide' }
     ],
     where: {
       'stateId': stateId
@@ -28,11 +26,7 @@ function get (req, res, next) {
 
   models.Course.findOne({
     include: [
-      { model: models.Image, as: 'mapImage' },
-      { model: models.Image, as: 'routeImage' },
-      { model: models.User, as: 'guide', include: { model: models.Image, as: 'profileImage' }},
-      { model: models.HashTag, as: 'hashTags' },
-      { model: models.Image, as: 'images', through: { attributes: [] }}
+      { model: models.User, as: 'guide' }
     ],
     where: {
       'courseId': courseId
