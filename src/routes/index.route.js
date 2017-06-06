@@ -1,6 +1,7 @@
 import express from 'express';
 import authRoutes from './auth.route';
 import userRoutes from './user.route';
+import locationRoutes from './location.route';
 import artRoutes from './art.route';
 import docentRoutes from './docent.route';
 import voiceRoutes from './voice.route';
@@ -21,6 +22,7 @@ router.get('/health-check', (req, res) =>
 
 router.use('/auth', authRoutes);
 router.use('/users', userRoutes);
+router.use('/locations', locationRoutes);
 router.use('/arts', artRoutes);
 router.use('/docents', docentRoutes);
 router.use('/voices', voiceRoutes);
