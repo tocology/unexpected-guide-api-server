@@ -9,7 +9,7 @@ function listSpotByCourseId (req, res, next) {
 
   const query = {
     include: [
-      { model: models.Spot, as: 'spot', required: true, attributes: { exclude: ['locationId', 'artistId'] } }
+      { model: models.Spot, as: 'spot', required: true, attributes: { exclude: ['artistId'] } }
     ],
     where: {
       'courseId': courseId
@@ -21,7 +21,6 @@ function listSpotByCourseId (req, res, next) {
   models.CourseSpot.findAll(
     limit ? Object.assign(query, { limit: parseInt(limit) }) : query
   ).then(results => {
-    console.log('!length', results.length);
     const reducedSpots = results.reduce((acc, result) => {
       acc.push(result['spot']);
       return acc;
