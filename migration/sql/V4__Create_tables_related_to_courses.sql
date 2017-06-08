@@ -178,7 +178,7 @@ CREATE TABLE `uxguide`.`spot_images` (
 CREATE TABLE `uxguide`.`inform` (
     `informId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `spotInformId` BIGINT NOT NULL COMMENT '지점 추가 정보 ID',
-    `infoType` VARCHAR(20) NOT NULL COMMENT '정보 TYPE (ROUTE, PUBLIC)',
+    `infoType` VARCHAR(20) NOT NULL DEFAULT 'ROUTE' COMMENT '정보 TYPE (ROUTE, PUBLIC)',
     `imageId` BIGINT DEFAULT NULL COMMENT '정보 이미지 ID',
     `description` TEXT(4000) DEFAULT NULL COMMENT '정보 설명',
     `priority` INT NOT NULL DEFAULT 1 COMMENT '정보 순번',
