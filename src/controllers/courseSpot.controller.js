@@ -21,27 +21,14 @@ function listSpotByCourseId (req, res, next) {
   models.CourseSpot.findAll(
     limit ? Object.assign(query, { limit: parseInt(limit) }) : query
   ).then(results => {
+    console.log('!length', results.length);
     const reducedSpots = results.reduce((acc, result) => {
       acc.push(result['spot']);
       return acc;
     }, []);
 
-    const addedReducedSpots = reducedSpots.map((reducedSpot, index) => {
-      if(index === reducedSpots.length - 1) {
-        return Object.assign({
-          ...reducedSpot,
-          isFinished: true
-        })
-      }
-
-      return Object.assign({
-        ...reducedSpot,
-        isFinished: false
-      })
-    });
-
     // respond spots
-    res.json(addedReducedSpots);
+    res.json(reducedSpots);
 
     // models.CoursePurchase.findOne({
     //   where: {
