@@ -7,7 +7,8 @@ module.exports = function (sequelize, DataTypes) {
     koreanName: { type: DataTypes.STRING(200), allowNull: true },
     englishName: { type: DataTypes.STRING(200), allowNull: false },
     description: { type: DataTypes.TEXT, allowNull: true },
-    spotType: { type: DataTypes.ENUM('BUILDING', 'ART', 'RESTAURANT'), defaultValue: 'BUILDING', allowNull: false },
+    spotType: { type: DataTypes.ENUM('NO_ACTION', 'ONLY_INFORM', 'BUILDING', 'ART', 'RESTAURANT'), defaultValue: 'BUILDING', allowNull: false },
+    finishSpotYn: { type: DataTypes.ENUM('Y', 'N'), defaultValue: 'N', allowNull: false },
     enableStatus: { type: DataTypes.ENUM('ACTIVE', 'INACTIVE'), defaultValue: 'ACTIVE', allowNull: false },
     updatedAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
     createdAt: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW }
