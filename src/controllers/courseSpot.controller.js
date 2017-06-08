@@ -26,8 +26,22 @@ function listSpotByCourseId (req, res, next) {
       return acc;
     }, []);
 
+    const addedReducedSpots = reducedSpots.map((reducedSpot, index) => {
+      if(index === reducedSpots.length - 1) {
+        return Object.assign({
+          ...reducedSpot,
+          isFinished: true
+        })
+      }
+
+      return Object.assign({
+        ...reducedSpot,
+        isFinished: false
+      })
+    });
+
     // respond spots
-    res.json(reducedSpots);
+    res.json(addedReducedSpots);
 
     // models.CoursePurchase.findOne({
     //   where: {
