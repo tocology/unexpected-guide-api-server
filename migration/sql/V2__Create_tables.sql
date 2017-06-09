@@ -29,6 +29,7 @@ CREATE TABLE `uxguide`.`users` (
 CREATE TABLE `uxguide`.`voices` (
     `voiceId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `url` VARCHAR(2083) NOT NULL COMMENT '음성 URL',
+    `voiceName` VARCHAR(200) NOT NULL COMMENT '음성 이름',
     `guideId` BIGINT NOT NULL COMMENT '가이드 ID',
     `price` BIGINT DEFAULT 0 COMMENT '음성 가격',
     `runningTime` BIGINT DEFAULT 0 COMMENT '음성 시간',
