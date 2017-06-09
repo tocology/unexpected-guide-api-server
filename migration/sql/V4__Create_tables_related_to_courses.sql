@@ -167,6 +167,7 @@ CREATE TABLE `uxguide`.`spot_images` (
     `spotImageId` BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `spotId` BIGINT NOT NULL COMMENT '지점 ID',
     `imageId` BIGINT NOT NULL COMMENT '이미지 ID',
+    `priority` INT NOT NULL DEFAULT 1 COMMENT '이미지 순번',
     `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정 일시',
     `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
     PRIMARY KEY (`spotImageId`),

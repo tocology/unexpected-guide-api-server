@@ -10,7 +10,7 @@ function _generateSigningParams() {
     // privateKeyString: process.env.PRIVATE_KEY,
     // Optional - this can be used as an alternative to privateKeyString
     privateKeyPath: path.resolve(__dirname, 'cloudfront/pk-APKAITG2XNVB7FJJ53ZA.pem'),
-    expireTime: moment().utc().add(1, 'day')
+    expireTime: moment().utc().add(5, 'minutes')
   }
 }
 
