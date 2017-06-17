@@ -2,6 +2,7 @@ module.exports = function (sequelize, DataTypes) {
   const Voice = sequelize.define('Voice', {
     voiceId: { type: DataTypes.BIGINT, allowNull: false, autoIncrement: true, primaryKey: true },
     url: { type: DataTypes.STRING(2083), allowNull: false },
+    voiceName: { type: DataTypes.STRING(200), allowNull: false },
     guideId: { type: DataTypes.BIGINT, allowNull: false },
     price: { type: DataTypes.BIGINT, defaultValue: 0, allowNull: true },
     runningTime: { type: DataTypes.BIGINT, defaultValue: 0, allowNull: true },
