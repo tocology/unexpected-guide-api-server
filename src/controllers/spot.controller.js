@@ -7,7 +7,10 @@ function get (req, res, next) {
     where: {
       'spotId': spotId
     }
-  }).then(spot => res.json(spot))
+  }).then(spot => {
+    console.log('spot!!', spot);
+    res.json(spot)
+  })
     .catch(e => next(e));
 }
 export default {

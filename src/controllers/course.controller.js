@@ -3,7 +3,7 @@ import models from '../models';
 export const defaultPageLimit = 20;
 
 function listByStateId (req, res, next) {
-  const { page } = req.query;
+  const { page, status } = req.query;
   const { stateId } = req.params;
 
   models.Course.findAll({
@@ -11,7 +11,8 @@ function listByStateId (req, res, next) {
       { model: models.User, as: 'guide' }
     ],
     where: {
-      'stateId': stateId
+      'stateId': stateId,
+      'enableStatus': status ? status: 'ACTIVE'
     },
     offset: (page - 1) * defaultPageLimit,
     limit: defaultPageLimit,
